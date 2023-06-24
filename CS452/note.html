@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Week 1&period; Jan 10</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <p>instructor: Martin Karsten</p>
+<p>MC4063 TTh 1-2:20</p>
+<p><a href="https://student.cs.uwaterloo.ca/~cs452/W23/">https://student.cs.uwaterloo.ca/~cs452/W23/</a></p>
+<details>
+<summary>ex</summary>
+4 1 32 5
+</details>
+<ul>
+<li><a href="#week-1-jan-10">Week 1. Jan 10</a></li>
+<li><a href="#week-2-jan-17">Week 2. Jan 17</a></li>
+<li><a href="#week-3-jan-24">Week 3. Jan 24</a></li>
+<li><a href="#week-4-jan-31">Week 4. Jan 31</a></li>
+<li><a href="#week-5-feb-7">Week 5. Feb 7</a></li>
+<li><a href="#week-6-feb-14">Week 6. Feb 14</a></li>
+<li><a href="#week-9-mar-7">Week 9. Mar 7</a></li>
+<li><a href="#week-11-mar-21">Week 11. Mar 21</a></li>
+</ul>
+<h1 id="week-1-jan-10">Week 1. Jan 10</h1>
+<pre><code>     +-----+                                linux.student.cs
+     |train|                      network     +-------+   network
+     |track|                   +--------------+ TFTP  +---------+
+     +-----+                   |              +-------+         |
+                               |                                |
+                               |                                |
++----+------+-----+         +--+---+                        +---+--+
+|PWR | 6021 | 6051+---------+ ARM  +---------+              | DEV  |
++----+------+-----+  COM1   +------+  COM2   |              +------+
+      Marklin               grey box         |
+                                             |
+                                             |
+                                             |
+                                             | /dev/ttySx
+                                          +--+--+
+                                          | OPS |
+                                          +-----+
+                                          track PC
+</code></pre>
+<p>raspberry runs without MLU, unaligned access to memory will not work.</p>
+<p>memory layout of running program</p>
+<pre><code>-------- 0xffff
+ stack v
+--------
+ heap  ^
+--------
+ data
+--------
+ txt
+--------
+-------- 0
+</code></pre>
+<p>elf sections</p>
+<ul>
+<li>text</li>
+<li>data: initialized data in the code</li>
+<li>bss: zero-inited data</li>
+</ul>
+<p><em>freestanding</em> environment (in contrast to hosted)</p>
+<ul>
+<li>has no OS under the hood</li>
+<li>no heap memory</li>
+<li>no libc; it is part of compiler</li>
+</ul>
+<p>memory setup:</p>
+<ul>
+<li>physical memory</li>
+<li>device registers: 'magic' addresses to communicate with devices
+<ul>
+<li>if we write bytes to the magic addresses, they are not written to memory but to devices.</li>
+<li>BCM section 1.2.4</li>
+<li>in 'low peripheral mode', please replace <code>0x7e000000</code> with <code>0xfe000000</code></li>
+</ul>
+</li>
+</ul>
+<p>system timer (ch10) (vs arm timer):</p>
+<ul>
+<li>has frequency 54Mhz (arm time has dynamic freq)</li>
+<li>7 control registers starting from <code>0x3000</code></li>
+<li>registers have Clo, Chi
+<ul>
+<li>only compare low part because time is 32bit wide</li>
+</ul>
+</li>
+</ul>
+<p>big polling loop (a0):</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">if</span> (c1) a1();
+    <span class="hljs-keyword">if</span> (c2) a2();
+}
+</code></pre>
+<p>serial communication</p>
+<ul>
+<li>pi board has GPIO</li>
+<li>serial hat connected to pins 18-21</li>
+<li>we program the pins to connect to SPI master etc</li>
+<li>delay initialization to runtime; flexible</li>
+<li>ch5 and page78</li>
+</ul>
+<pre><code>                GPIO
+                +--+         +--+
+                |  +-------&gt; +--+ SPI master
+                |  |
++-----+         |  |         +--+
+|ser. +------&gt;  | 18+-------&gt;---+
+|hat  |         | ..
++-----+------&gt;  | 21 +------&gt;+--+
+                |  |         +--+
+                |  |
+                |  +-------&gt; +--+
+                +--+         +--+
+</code></pre>
+<p>SP1 (serial peripheral interface) (section 2.3 and ch9)</p>
+<ul>
+<li>synchronous interface</li>
+</ul>
+<pre><code>                31             0
+                +--+---+---+---+
+                |  | 1 | 2 | 3 |  +----&gt; send end
+                +^-+---+---+---+
+               count
+               bits
+
+                +--+---+---+---+
+recv end  +---&gt; |  | 1 | 2 | 3 |
+                +--+---+---+---+
+                         1   2
+                             1
+</code></pre>
+<p>UART:</p>
+<ul>
+<li>a characteristic device (within arm): 1 byte at a time</li>
+<li>asynchronous</li>
+<li>FIFO buffer
+<ul>
+<li>do not worry about performance implications for now</li>
+</ul>
+</li>
+<li>has register
+<ul>
+<li>TX/RX level regs (whether can send/receive data)</li>
+<li>TX/RX hold regs</li>
+</ul>
+</li>
+<li>not BCM, but SCI6 on top of pi</li>
+<li>SCI6 section 8, addressing table 34</li>
+</ul>
+<p>UART configuration:</p>
+<ul>
+<li>start and stop bits</li>
+<li>parity bit (a redundant bit for detecting error)</li>
+<li>channel 1: 115200 baud (impulses/s)
+<ul>
+<li>communicate with terminal</li>
+<li>8 bits per byte, no start bit, no parity, 1 stop bit</li>
+</ul>
+</li>
+<li>channel 2: 2400 baud
+<ul>
+<li>with trains</li>
+<li>8 bits per byte, no parity, no start bit, 2 stop bits</li>
+<li>so 2400/10 = 240 bytes per second</li>
+</ul>
+</li>
+</ul>
+<p>train and track commands:</p>
+<ul>
+<li>speed: 2 bytes
+<ul>
+<li>speed: 0-14; 15 for reversing; plus 16 for lights</li>
+<li>train number</li>
+</ul>
+</li>
+<li>turnouts: 2 bytes
+<ul>
+<li>0x21 straight; 0x22 curved</li>
+<li>train number</li>
+<li>please use 0x20 to wait</li>
+</ul>
+</li>
+<li>sensor:
+<ul>
+<li>reset 0xc0</li>
+<li>half-duplex</li>
+</ul>
+</li>
+</ul>
+<p><strong>eg.</strong> this code is bad; do not use other than SPI code</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">while</span> (!c1) a1();
+    <span class="hljs-keyword">while</span> (!c2) a2();
+}
+</code></pre>
+<h1 id="week-2-jan-17">Week 2. Jan 17</h1>
+<p>problems:</p>
+<ul>
+<li>no SIMD instruction</li>
+<li><code>-q0 -mgeneral-regs-only</code></li>
+<li>ldur/stur create unaligned accesses and crash; use <code>-mstrict-align</code> (sometimes no working with c++)</li>
+</ul>
+<p>bounties:</p>
+<ul>
+<li>fix toolchain</li>
+<li>give compact examples of the problem</li>
+<li>get redboot to work</li>
+</ul>
+<h2 id="multitasking">multitasking</h2>
+<p>what is problem in the polling loop?</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">if</span> (c1) a1();
+    <span class="hljs-keyword">if</span> (c2) a2();
+}
+</code></pre>
+<p>even if only <code>c1</code> is active, we still need to check everything.</p>
+<p>improvement?</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">if</span> (c1) a1();
+    <span class="hljs-keyword">if</span> (c2) a2();
+    <span class="hljs-keyword">if</span> (c1) a1();  <span class="hljs-comment">// c1 is important, let&#x27;s check again</span>
+    ...
+}
+</code></pre>
+<p>this does not solve the problem.</p>
+<p>what if we split big task:</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">if</span> (c1) a1();
+    <span class="hljs-keyword">if</span> (c2) {a2_1(); a2_half_done = <span class="hljs-number">1</span>;}
+    <span class="hljs-keyword">if</span> (c1) a1();
+    <span class="hljs-keyword">if</span> (a2_half_done) {a2_2();}
+}
+</code></pre>
+<p>this is too complex, not reusable.</p>
+<p>concurrency:</p>
+<ul>
+<li>manage independent activities.</li>
+<li>separation of concerns</li>
+<li>runtime management</li>
+<li>multitasking (kernel + tasks) is one way to deal with concurrency</li>
+</ul>
+<p>key concerns of task: use stack; because need to handle recursion (unknown number of push/pops).</p>
+<p>canonical approach of kernel code:</p>
+<pre><code class="language-c"><span class="hljs-type">void</span> <span class="hljs-title function_">kmain</span><span class="hljs-params">()</span> {
+  initialize();  <span class="hljs-comment">// includes starting the first user task</span>
+  <span class="hljs-keyword">for</span> (;;) {
+    currtask = schedule();
+    request = activate(currtask);
+    handle(request);
+  }
+}
+</code></pre>
+<p>kernel:</p>
+<ul>
+<li>create and manage tasks</li>
+<li>hardware protection mechanisms
+<ul>
+<li>uses kernel mode
+<ul>
+<li>kernel mode is usually configured to be non-interruptable</li>
+<li>in user mode we want interrupts</li>
+</ul>
+</li>
+<li>has memory protection</li>
+</ul>
+</li>
+<li>task communication and synchronization are exclusively done by message passing</li>
+</ul>
+<p>why not shared memory for communication? it uses locks that are for OS.</p>
+<p>entry/exit kernel-user-level tasks</p>
+<ul>
+<li>software interrupts (via syscalls)</li>
+<li>hardware interrupts</li>
+</ul>
+<p>task stack has:</p>
+<ul>
+<li>scheduling state: ready/blocked/active
+<ul>
+<li>blocked: might be waiting for IO</li>
+<li>need a queue for scheduling and blocking
+<ul>
+<li>priority queue + round robin for equal priority</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>execution state: which line of code/what are values for variables</li>
+<li>task descriptor</li>
+</ul>
+<p>memory:</p>
+<ul>
+<li>no shared memory: no global vars, static symbol in theory
+<ul>
+<li>it is ok to use static gv for singleton (const)</li>
+</ul>
+</li>
+<li>primarily on stack</li>
+<li>no heap</li>
+<li>might still need some dynamic mem allocation
+<ul>
+<li><em>slab allocation</em>: slabs of memory + free list</li>
+<li>free list is still a linked list =&gt; use <em>intrusive linkage</em>: embed next pointer within the data structure</li>
+</ul>
+</li>
+</ul>
+<p>software development principle: KISS</p>
+<ul>
+<li>knuth: no premature optimization</li>
+</ul>
+<h2 id="context-switch">context switch</h2>
+<p>ARMv8:</p>
+<ul>
+<li>execution state: 32bit (historical) or 64bit</li>
+<li>execution level:
+<ul>
+<li>0: user program</li>
+<li>1: kernel</li>
+<li>2: hypervisor (default boot mode)</li>
+<li>3: secure</li>
+</ul>
+</li>
+</ul>
+<p>register file:</p>
+<ul>
+<li><code>x0..x30</code>: general purpose; 32bit</li>
+<li><code>x31 = xzr</code>: zero</li>
+<li><code>r15 = rpc</code>: program counter</li>
+<li><code>r13 = rsp</code>: tack pointer register bank (4 exec levels =&gt; 4 regs)</li>
+<li>pstate: processor state
+<ul>
+<li>exec state</li>
+<li>whether interrupts are taking place</li>
+<li>condition codes N,C,Z,V</li>
+</ul>
+</li>
+<li>many system control register banks (section 4.3)
+<ul>
+<li>MRS/read</li>
+<li>MSR/write</li>
+<li>SPSR (saved processor state; last pstate after doing exec level switch)</li>
+<li>ELR (link register)</li>
+<li>ESR (status of system)</li>
+<li>VBAR</li>
+</ul>
+</li>
+</ul>
+<p>ARM instructions:</p>
+<ul>
+<li>32bit RISC instructions</li>
+<li>SIMD instructions (we do not use)</li>
+<li>unaligned memory (we do not use)</li>
+</ul>
+<p>what is context switch? changing stack (pointer), register file and pc.</p>
+<p>questions:</p>
+<ul>
+<li>do we use same stack?</li>
+<li>is it synchronous? (switch on our own or something happens)</li>
+<li>is it symmetric? (same procedure when switching from A to B as B to A?) typically not</li>
+<li>subroutine call: same stack, synchronous, asymmetric</li>
+<li>coroutine: different stacks, synchronous, symmetric</li>
+<li>multitasking: plus a scheduler</li>
+</ul>
+<p>kernel design: 01N</p>
+<ul>
+<li>1: use single kernel stack with state (recommended)</li>
+<li>0: no stack, 'subroutine' have global/static state (ugly)</li>
+<li>N: one stack per user task - multithread kernel (complicated)</li>
+</ul>
+<p>application binary interface (ABI)</p>
+<ul>
+<li>registers: structure and hardware roles
+<ul>
+<li><code>x0-x7</code> for procedure arguments</li>
+<li><code>x8</code>: struct return values (caller provides memory)</li>
+<li><code>x9-x15</code>: local register</li>
+<li><code>x16-x17</code>: reserved for linker</li>
+<li><code>x18</code>: platform, TLS</li>
+<li><code>x19-x28</code>: global registers</li>
+<li><code>x29</code>: frame pointer</li>
+<li><code>x30</code>: link register (ret address)</li>
+</ul>
+</li>
+<li>rules:
+<ul>
+<li><code>x0-x18</code> are caller-saved (callee-owned)</li>
+<li><code>x19-...</code> are callee-saved</li>
+<li>pstate, condflags are undefined</li>
+<li>stack pointer needs to be aligned to multiple of 16</li>
+</ul>
+</li>
+</ul>
+<p>subroutine</p>
+<ul>
+<li><code>b dst</code> jump</li>
+<li><code>bl dst</code> jump &amp; link</li>
+<li><code>ret</code> pc:=lr</li>
+</ul>
+<p><em>stack switch</em>: a simple form of context switch</p>
+<pre><code class="language-c"><span class="hljs-comment">// abi rules apply (x0-x18 already saved)</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">StackSwitch</span><span class="hljs-params">(<span class="hljs-type">char</span>* newSP, <span class="hljs-type">char</span>** oldSP)</span>;
+</code></pre>
+<ol>
+<li>save <code>x19-x30</code> (push to stack)</li>
+<li>save SP to to memory location <code>*x1</code></li>
+<li>load SP from <code>x0</code></li>
+<li>restore <code>x19-x30</code> (pop)</li>
+<li>return</li>
+</ol>
+<p>mode switch:</p>
+<ul>
+<li>SP is banked; SPSd = 1</li>
+<li>system call: synchronous
+<ul>
+<li><code>svc N =&gt; handler();</code> (N from ESR)</li>
+<li>ABI rules apply</li>
+<li>asymmetric</li>
+</ul>
+</li>
+<li>interrupt
+<ul>
+<li>ABI rules do not apply</li>
+<li>pstate is relevant</li>
+</ul>
+</li>
+</ul>
+<p>how to implement <code>handler()</code> for syscall:</p>
+<ul>
+<li>exception vector (sec 10.4)
+<ul>
+<li>VBAR_EL1: 4 groups of 4 vectors, each vector is 128 bytes
+<ul>
+<li>(initialize to something that crash, and only work on needed)</li>
+<li>groups: at 64 bit mode</li>
+<li>vectors: synchronous, IRQ</li>
+<li>if handler is short enough, can directly write to entry</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="week-3-jan-24">Week 3. Jan 24</h1>
+<p>useful registers in SVC mode switch:</p>
+<ul>
+<li>ELR_EL1 stores PC</li>
+<li>ESR_EL1 stores the N in <code>svc</code></li>
+<li>SPSR_EL1 stores process state</li>
+<li>PC is the first address of exception handler</li>
+<li>SPSel bit: 0/1; 0 means sp is EL0; 1 means sp is EL1 banks
+<ul>
+<li>can use SP_EL0/1/... to get sp directly</li>
+</ul>
+</li>
+</ul>
+<p><strong>eg.</strong> how to mix C code and assembler?</p>
+<p>main.c:</p>
+<pre><code class="language-c"><span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> <span class="hljs-title function_">adder</span><span class="hljs-params">(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>)</span>;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> {...}
+</code></pre>
+<p>adder.c:</p>
+<pre><code class="language-arm"><span class="hljs-symbol">.text</span>
+<span class="hljs-symbol">.align</span> <span class="hljs-number">2</span>  <span class="hljs-comment">// align everything to 2^2=4 bytes (instr size)</span>
+          <span class="hljs-comment">// or .balign 4</span>
+<span class="hljs-symbol">.global</span>	adder
+<span class="hljs-symbol">.type</span> adder, %<span class="hljs-meta">function</span>
+<span class="hljs-symbol">adder:</span>
+  <span class="hljs-keyword">add</span> x2, x1, x0
+  <span class="hljs-keyword">mov</span> x0, x2
+  <span class="hljs-keyword">bx</span> <span class="hljs-built_in">lr</span>  <span class="hljs-comment">// or ret</span>
+</code></pre>
+<p><strong>eg.</strong> combine assembler with C code.</p>
+<pre><code class="language-c"><span class="hljs-comment">/* https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html */</span>
+<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> val;
+<span class="hljs-comment">// read via asm</span>
+<span class="hljs-keyword">asm</span> <span class="hljs-title function_">volatile</span><span class="hljs-params">(<span class="hljs-string">&quot;mrs %x0, cpsr&quot;</span> : <span class="hljs-string">&quot;=r&quot;</span>(val))</span>;
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;cpsr: 0x%x\n\r&quot;</span>, val);
+<span class="hljs-comment">// write via asm</span>
+<span class="hljs-keyword">asm</span> <span class="hljs-title function_">volatile</span><span class="hljs-params">(<span class="hljs-string">&quot;msr cpsr, %x0&quot;</span> :: <span class="hljs-string">&quot;r&quot;</span>(val))</span>;
+</code></pre>
+<p>pi initialization:</p>
+<ul>
+<li>power, reset
+<ul>
+<li>all memory reset</li>
+<li>hardware/devices reset</li>
+</ul>
+</li>
+</ul>
+<p>kernel start:</p>
+<ul>
+<li>EL1</li>
+<li>stack</li>
+<li>IRQ disabled (more on this later)</li>
+<li>K1: set up syscalls</li>
+<li>later: set up IRQs, timer, uart, reset the track</li>
+<li>create initial task, push to ready queue, and start main loop</li>
+</ul>
+<p>task exit: what if user program forgets to call <code>Exit()</code>? wrap the user function:</p>
+<pre><code class="language-c"><span class="hljs-type">void</span> <span class="hljs-title function_">task_start</span><span class="hljs-params">(<span class="hljs-type">void</span> (*task_function)())</span> {
+    task_function();
+    Exit();
+}
+</code></pre>
+<p>scheduling:</p>
+<ul>
+<li>initial preparation and time slicing</li>
+<li>after kernel entry and corresponding processing: ready or block</li>
+</ul>
+<h2 id="message-passing">message passing</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sender</th>
+<th style="text-align:center">receiver</th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SEND_WAIT</td>
+<td style="text-align:center">RECEIVE_WAIT</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">mailbox: queue of senders</td>
+<td style="text-align:right">when ready, sender put itself to queue</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">rendezvous</td>
+<td style="text-align:right">copy message</td>
+</tr>
+<tr>
+<td style="text-align:center">REPLY_WAIT</td>
+<td style="text-align:center"></td>
+<td style="text-align:right">&lt;- decouple in time/space</td>
+</tr>
+<tr>
+<td style="text-align:center">2nd rendezvous</td>
+<td style="text-align:center"></td>
+<td style="text-align:right">copy response</td>
+</tr>
+</tbody>
+</table>
+<p>message:</p>
+<ul>
+<li>byte memory; use union/type casting for type safety</li>
+</ul>
+<p>synchronization:</p>
+<ul>
+<li>no locks, cvs, semaphores required
+<ul>
+<li>because there is no shared memory</li>
+</ul>
+</li>
+<li>what about devices: use one task for device</li>
+</ul>
+<p>we can build an async producer/consumer pattern on top of the sync message passing mechanism.</p>
+<p>single-producer-single-consumer</p>
+<ul>
+<li>two options:
+<ul>
+<li>producer sends data =&gt; push</li>
+<li>consumer sends request =&gt; pull</li>
+<li>sender needs to block</li>
+</ul>
+</li>
+</ul>
+<p>multiple-producer-single-consumer</p>
+<ul>
+<li>push communication is good</li>
+<li>pull communication: needs to wait for multiple producers, which one to pull from?</li>
+</ul>
+<p>single-producer-multiple-consumer</p>
+<ul>
+<li>pull communication is good</li>
+<li>push communication is not good</li>
+</ul>
+<p>multiple-producer-multiple-consumer</p>
+<ul>
+<li>add a buffer task
+<ul>
+<li>MPSC as the single consumer</li>
+<li>SPMC as the single producer</li>
+</ul>
+</li>
+</ul>
+<p>server pattern:</p>
+<ul>
+<li>task provides service</li>
+<li>server never calls <code>Send()</code> =&gt; server is either busy computing or available on request (receive)</li>
+<li>it is a loop:
+<ol>
+<li>receive request</li>
+<li>process request</li>
+<li>(delayed) response</li>
+</ol>
+</li>
+</ul>
+<p>name resolution:</p>
+<ul>
+<li>always has implicit/default starting point (<em>closure mechanism</em>)</li>
+<li>have name string =&gt; tid integer</li>
+<li>resolution then communication</li>
+</ul>
+<h1 id="week-4-jan-31">Week 4. Jan 31</h1>
+<p>compiler optimization:</p>
+<ul>
+<li>instruction reordering</li>
+<li>loop unrolling</li>
+<li>constant folding</li>
+<li>remove code without side effects</li>
+<li>register caching</li>
+<li>eliminate repeated reads/writes</li>
+<li>compiler understands data dependencies
+<ul>
+<li>but only single-threaded</li>
+</ul>
+</li>
+</ul>
+<p>C/C++ volatile:</p>
+<pre><code class="language-c"><span class="hljs-type">int</span> addr = <span class="hljs-number">0xfe000000</span> + <span class="hljs-number">0x3000</span> + <span class="hljs-number">0x04</span>;
+<span class="hljs-keyword">volatile</span> <span class="hljs-type">unsigned</span> *d = (...)addr;
+<span class="hljs-type">unsigned</span> val = *d;
+</code></pre>
+<p>timing/measurements:</p>
+<p><strong>eg.</strong> what is problem with this measurement?</p>
+<pre><code class="language-c">start = clock();
+...
+stop = clock();
+duration = stop - start;
+</code></pre>
+<ul>
+<li>duration of <code>clock()</code> call counts</li>
+<li>background noise</li>
+<li>inaccuracy and granularity</li>
+</ul>
+<p>improvement: do many operations and measure total time, then take average. this has problems too</p>
+<ul>
+<li>compiler optimization may comes in the way: use <code>volatile</code></li>
+<li>loop execution (counter, branch)</li>
+<li>N needs to be big</li>
+</ul>
+<p>periodic action with period X:</p>
+<p><strong>eg.</strong> what is problem with this?</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    sleep(X);
+    action();
+}
+</code></pre>
+<ul>
+<li>sleep may drift and accumulate errors</li>
+<li>action itself takes time =&gt; actually not sleeping for X</li>
+</ul>
+<p>an improvement:</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    target += X;  <span class="hljs-comment">// never accumulates error</span>
+    sleep(target - clock());
+    action();
+}
+</code></pre>
+<p>CPU caches:</p>
+<ul>
+<li>L1data: 128kb</li>
+<li>L1intruction: 192kb</li>
+<li>L2 unified: 2MB</li>
+<li>branch predictors</li>
+<li>TLB</li>
+<li>write buffer: mediate fast cpu and slow memory</li>
+</ul>
+<p>cache modes (section b2.7)</p>
+<ul>
+<li>non cachable: for devices</li>
+<li>write-through</li>
+<li>write-back</li>
+<li>don't have to mess with these</li>
+</ul>
+<p>cache setup:</p>
+<ul>
+<li>SCTLR_EL1: controls both EL0 and EL1</li>
+</ul>
+<p>cache maintainance:</p>
+<ul>
+<li>CTR_ELO: cache information</li>
+<li>CSSIDR_EL1 | CSSELR_EL1: cache sizes</li>
+<li>clean cache</li>
+<li>invalidate cache</li>
+<li>disable -&gt; disable: noop</li>
+<li>enable -&gt; disable: clean</li>
+<li>enable -&gt; enable: clean</li>
+<li>enable -&gt; disable -&gt; enable: invalidate</li>
+</ul>
+<h2 id="interrupts">interrupts</h2>
+<p>interrupts vs polling</p>
+<ul>
+<li>kernel wakes user tasks</li>
+<li>asynchronous =&gt; high overhead (switching contexts)</li>
+<li>best of both worlds: interrupt mitigation (NAPI)</li>
+</ul>
+<p>interrupt handling/scheduling:</p>
+<ul>
+<li>return-to-task
+<ul>
+<li>eg: record clock ticks and return to task</li>
+<li>may be more complex: time slicing</li>
+</ul>
+</li>
+<li>preemptive
+<ul>
+<li>always reschedule</li>
+<li>full context switch</li>
+</ul>
+</li>
+</ul>
+<p>stack-switch:</p>
+<ul>
+<li>pure stack switch =&gt; save caller-saved registers (x10-x30)</li>
+<li>pure irq switch =&gt; save x0-x18</li>
+</ul>
+<p>interrupt hardware</p>
+<ul>
+<li><code>device -- interrupt controller -- CPU</code></li>
+<li>enabling/disabling cpu interrupt flags =&gt; ignore them</li>
+<li>GIC-400 is GICv2 (vs arm legacy controller)</li>
+<li>base address: <code>0xff840000</code></li>
+<li>GIC reference ch 4</li>
+<li>bootloader disables interrupts via DAIF set (section 652,10.1)</li>
+<li>GIC default: all interrupts disabled
+<ul>
+<li>need to set up GIC
+<ul>
+<li>GICC control, GICD distribution</li>
+</ul>
+</li>
+<li>set up pstate usev</li>
+</ul>
+</li>
+</ul>
+<p>edge interrupt vs level interrupt</p>
+<ul>
+<li>clock tick creates level interrupt to interrupt handler. interrupt handler gives it to cpu. the cpu needs to respond</li>
+</ul>
+<p>GIC registers</p>
+<ul>
+<li>GICD-ISENABLER =&gt; enable (bitmask)</li>
+<li>GICD-ITAREGISTER =&gt; reroute to core 0</li>
+<li>GICC-IAR =&gt; retrieve interrupt IRQ#</li>
+<li>GICC-EOIR =&gt; confirm to GIC that interrupt is processed</li>
+</ul>
+<p>how to get interrupt number (IRQ#):</p>
+<ul>
+<li>timers: (video core) VC 0-3 (broadcom 6.2.4)</li>
+<li>VC interrupt =&gt; plus 96</li>
+</ul>
+<p>handler routine:</p>
+<ul>
+<li>set up exception vector</li>
+<li>EL1, registers disabled</li>
+<li>on EL1 stack</li>
+<li>start context switch</li>
+</ul>
+<h1 id="week-5-feb-7">Week 5. Feb 7</h1>
+<p>timer interrupt:</p>
+<ul>
+<li>compare registers: C0 - C3
+<ul>
+<li>C0 and C2 are for video core, so use C1 or C3</li>
+</ul>
+</li>
+<li>confirm: use CS register</li>
+<li>the timer device is actually level signal, because without CS register, we get interrupt immediately (we would not need CS if it were CS).</li>
+</ul>
+<p>AwaitEvent():</p>
+<ul>
+<li>matchmaking, similar to SSR</li>
+<li>what if event happens but the task that should be waiting on it is not available =&gt; system is overloaded</li>
+<li>what if N tasks waiting for same interrupt =&gt; perhaps do not do that</li>
+<li>kernel delivers one task to notifier and notifier asserts</li>
+</ul>
+<p>interrupt handling:</p>
+<ul>
+<li>user task executing -&gt; interrupt -&gt; handler -&gt; kernel determines interrupt -&gt; process &amp; confirm -&gt; push to ready queue</li>
+<li>after confirm, we can have a loop to handle another interrupt if we care about interrupts have same priority and happen at same time
+<ul>
+<li>not caring would also work =&gt; more context switches</li>
+</ul>
+</li>
+</ul>
+<p>clock server:</p>
+<pre><code class="language-c"><span class="hljs-comment">// same standard server loop</span>
+<span class="hljs-keyword">for</span> (;;) {
+    req = Receive();
+    process(req);
+    <span class="hljs-keyword">if</span> (...) {
+        Reply(req);
+    }
+}
+</code></pre>
+<p>the blocking on AwaitEvent is delegated to the clock notifier:</p>
+<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    AwaitEvent();
+    Send(clock_server);
+}
+</code></pre>
+<p>idle:</p>
+<ul>
+<li>no task is ready to execute</li>
+<li>should see ~90% of time to be idling</li>
+<li>can do
+<ul>
+<li>diagnosis (compute time)</li>
+<li>maintenance (scrub task stacks)</li>
+<li>save -&gt; call <code>wfi</code> to go to low power mode (<code>wfe</code> also includes interprocessor interrupts) -&gt; device interrupt happens
+<ul>
+<li>there may be spurious wake-ups =&gt; need to check clock tick</li>
+<li>waking up from this mode may be slower than busy wait</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="software-design">software design</h2>
+<p>problem complexity vs. solution complexity</p>
+<p>objectives:</p>
+<ul>
+<li>complexity
+<ul>
+<li>modularization</li>
+<li>smaller tasks</li>
+</ul>
+</li>
+<li>correctness
+<ul>
+<li>deadlock avoidance
+<ul>
+<li>avoid circular send</li>
+<li>avoid circular receive</li>
+<li>do not mix send and receive in same task</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>performance/efficiency/throughput</li>
+<li>timeliness/latency
+<ul>
+<li>scheduling priorities</li>
+<li>low utilization</li>
+</ul>
+</li>
+</ul>
+<p>design patterns:</p>
+<ul>
+<li>task types: client, server, worker</li>
+<li>worker types:
+<ul>
+<li>notifier<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    AwaitEvent();
+    Send();
+}
+</code></pre>
+</li>
+<li>courier<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    Send(server1, req, msg);  <span class="hljs-comment">// pull from server 1</span>
+    Send(server2, msg);       <span class="hljs-comment">// receive from server 2</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>debugging:</p>
+<ul>
+<li>program model &lt;=&gt; implementation</li>
+<li>environment (HW/SW): interface &lt;=&gt; internals</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">model</th>
+<th style="text-align:center">implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">program</td>
+<td style="text-align:center">design/logic</td>
+<td style="text-align:center">code</td>
+</tr>
+<tr>
+<td style="text-align:center">environment</td>
+<td style="text-align:center">interface &amp; docs</td>
+<td style="text-align:center">internals</td>
+</tr>
+</tbody>
+</table>
+<p>debugging strategy</p>
+<ul>
+<li>logging (print)</li>
+<li>declaring (assert)</li>
+<li>unit testing</li>
+<li>inspection</li>
+<li>interactive debugging: not easily accessible right now</li>
+<li>no experiment can prove something</li>
+<li>build model: gather data, compare model and data, repeat</li>
+</ul>
+<p>timing problems</p>
+<ul>
+<li>realtime: timing &lt;=&gt; correctness</li>
+<li>non-determinism/concurrency: timing =&gt; functionality</li>
+</ul>
+<p>race condition/data races:</p>
+<ul>
+<li>concurrent access to resource</li>
+<li>potential problem if any one access is a mutation
+<ul>
+<li>leads to multiple outcomes</li>
+</ul>
+</li>
+<li>real problem if a least one outcome is incorrect
+<ul>
+<li>coordination</li>
+</ul>
+</li>
+</ul>
+<h1 id="week-6-feb-14">Week 6. Feb 14</h1>
+<h3 id="uart">uart</h3>
+<pre><code>cpu --- spi --- uart (tx/rx) --- marklin
+    gpio
+</code></pre>
+<p>sources of uart interrupts:</p>
+<ul>
+<li>transmit TX fifo is not full</li>
+<li>receive RX fifo is not empty</li>
+<li>receive timeout RX fifo not empty below trigger level for some time (4 byte times hardcoded)</li>
+<li>trigger levels =&gt; level signal</li>
+<li>CTS -&gt; flow control
+<ul>
+<li>this is edge signal</li>
+</ul>
+</li>
+</ul>
+<p>uart IRQ control:</p>
+<ul>
+<li>interrupt is controlled by IER register (section 8)</li>
+<li>cpu only gets one interrupt via gpio</li>
+<li>read IIR register to query and confirm</li>
+</ul>
+<p>uart fifo:</p>
+<ul>
+<li>hardware FIFO (64 bytes) reduces interrupt rates (with interrupt mitigation) and absorbs small bursts of data</li>
+<li>enable/disable both RX/TX in FCR[0]</li>
+<li>triggers FCR
+<ul>
+<li>EFR[4] =&gt; MCR[2] =&gt; TLR</li>
+</ul>
+</li>
+</ul>
+<p>operation:</p>
+<ul>
+<li>naive: interrupt -&gt; action</li>
+<li>better: interrupt -&gt; check status -&gt; action -&gt; repeat</li>
+<li>best: check status -&gt; action or wait for interrupt -&gt; repeat</li>
+</ul>
+<p><strong>eg.</strong> when writing to TX fifo:</p>
+<ol>
+<li>write TX</li>
+<li>check TXLVL</li>
+<li>if not ready, enable TX interrupt, otherwise go back to step 1</li>
+<li>[interrupt]</li>
+<li>disable TX interrupt</li>
+<li>go to step 1</li>
+</ol>
+<p>task structure:</p>
+<ul>
+<li>uart server(s)</li>
+<li>notifier to handle interrupts/events</li>
+<li>read/write using syscalls</li>
+</ul>
+<p>SPI:</p>
+<ul>
+<li>need atomicity of 2-byte UART operations</li>
+<li>implement in SPI interactions in kernel and expose via UART-specific system calls</li>
+</ul>
+<p>GPIO:</p>
+<ul>
+<li>gpio banks: 0-27, 28-45, 46-57</li>
+<li>gpio pin for interrupts: 24</li>
+<li>gpio interrupt for VC is 49</li>
+<li>add 96 = 145</li>
+<li>set up for pin 24:
+<ul>
+<li>set function GPIO_INPUT, resistor GPIO_NONE</li>
+<li>add interrupt by setting Bit 24 in GPLEN0</li>
+</ul>
+</li>
+</ul>
+<p>flow control:</p>
+<ul>
+<li>not overwhelming the marklin box</li>
+<li>UART's 'TX ready' status only means the communication channel is ready.</li>
+<li>Clear-To-Send (CTS) signalled on separate wire when the receiver is able to receive and process the next byte</li>
+<li>before sending, check TX up and CTS actually transitions from low to up</li>
+</ul>
+<h2 id="train">train</h2>
+<p>train velocity differs at each level of speed, and differs in each environment =&gt; cannot predict state of the track. have to measure the speed.</p>
+<p>data representation of velocity:</p>
+<ul>
+<li>velocity = distance / time</li>
+<li>time: 32 bits at 1ns =&gt;. ~71 minutes</li>
+<li>10ms ticks</li>
+<li>longest shortest path: 10500 mm</li>
+<li>no floating point
+<ul>
+<li>use fixed-point representation with scale by power of 2 (shift is faster)</li>
+<li>avoid integer rounding <code>(a/(b/c)) = a*c/b = c*(a/b)</code></li>
+</ul>
+</li>
+</ul>
+<p>server types:</p>
+<ul>
+<li>proprietor
+<ul>
+<li>control exclusive access to a resource</li>
+<li>node internal buffering, serial execution</li>
+<li>sync or async execution</li>
+<li>example: track server -&gt; uart server<pre><code class="language-c"><span class="hljs-keyword">for</span> (;;) {
+    Receive();
+    syncProcess();
+    Reply();
+    asyncProcess();
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>administrator
+<ul>
+<li>general server</li>
+<li>must not send</li>
+<li>buffer and park requests</li>
+<li>use worker for communication</li>
+<li>client communication</li>
+</ul>
+</li>
+</ul>
+<p>suggestion:</p>
+<ul>
+<li>build small independent control loops
+<ul>
+<li>localized location estimate vs. route-based location estimate</li>
+</ul>
+</li>
+<li>higher concurrency and lower complexity via smaller tasks?</li>
+</ul>
+<h1 id="week-9-mar-7">Week 9. Mar 7</h1>
+<h2 id="train-modelling">train modelling</h2>
+<p>experiments and data:</p>
+<ul>
+<li>determine minimum speed (per segment) to avoid getting stuck</li>
+<li>stop from lower speed is more accurate</li>
+</ul>
+<p>measurement:</p>
+<ul>
+<li>use tight polling loop (no kernel)</li>
+<li>sensor -&gt; timestamp</li>
+<li>measurement errors:
+<ul>
+<li>signal delivery (marklin processing) =&gt; constant error cancel out when subtracting timestamps</li>
+<li>delivery to software (polling loop) =&gt; is variable, use statistical modelling</li>
+<li>processing in software =&gt; small, ignore</li>
+</ul>
+</li>
+</ul>
+<p>uncertainty:</p>
+<ul>
+<li>assume actual sensor times are uniformly distributed across duration of polling loop</li>
+<li>time interval between two sensors in sum of uniform distributions
+<ul>
+<li>general case (N &gt; 2): irwin-hall distribution</li>
+<li>N = 2: triangular distribution</li>
+<li>sample mean/variance are good estimates of real mean/variance</li>
+<li>can also use min/max to estimate midpoint</li>
+</ul>
+</li>
+<li>velocity (dist/time) is nonlinear
+<ul>
+<li>compute average time first, then speed; no other way around</li>
+</ul>
+</li>
+<li>we will not see perfect triangular distribution, but bimodal (or trimodal in corner cases)
+<ul>
+<li>frequency too low (70m)</li>
+</ul>
+</li>
+<li>recommendation: keep experiment raw data as much as possible</li>
+</ul>
+<p><strong>eg.</strong> if we have dist=100, t1=10, t2=20: then tavg=15, so v=100/15=6.67.</p>
+<p>dynamic calibration: use <em>exponentially weighted moving average</em> (EWMA)</p>
+<ul>
+<li>formula: <code>c &lt;- c * (1 - a) + d * a</code></li>
+<li>c: current time estimate; d: next data sample; a: weighting factor</li>
+<li>no need to store array of samples</li>
+<li>with appropriate choice of a (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mfrac><mn>1</mn><msup><mn>2</mn><mi>n</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\alpha=\frac{1}{2^n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5935em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>), can use bit shift</li>
+<li>can use similar approximation for standard deviation</li>
+</ul>
+<p>acceleration:</p>
+<ul>
+<li>velocity is finite &lt;=&gt; movement must be continuous</li>
+<li>acceleration is finite &lt;=&gt; velocity must be continuous</li>
+<li>simplified kinematic model: assume constant acceleration
+<ul>
+<li>approximate as average velocity during acceleration interval</li>
+<li>or approximate as velocity step change in the middle of the interval</li>
+<li>both ok if somewhat lower-quality location estimate is acceptable during acceleration</li>
+</ul>
+</li>
+<li>measurement:
+<ul>
+<li>similar to velocity</li>
+<li>measure time between two sensors</li>
+<li>change speed level at 1st sensor</li>
+<li>then compute acceleration based on known estimates for velocities
+<ul>
+<li>velocities are known by measuring avg time and constant dist</li>
+<li>first detect whether train has reached target velocity at 2nd sensor?</li>
+<li>avg velocity during acceleration interval is <code>v_avg = (v1 + v2) / 2</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>eg.</strong> acceleration completes before 2nd sensor hit (<code>d/t &gt; v_avg</code>)</p>
+<ul>
+<li>split d=d1+d2 into two segments (d1: acceleration, d2: stable velocity)</li>
+<li>split t into corresponding segments</li>
+<li><code>v_avg = d1 / t1</code></li>
+<li><code>v2 = d2 / t2</code></li>
+<li>can solve for d1, d2, t1, t2</li>
+<li>acceleration is <code>(v2 - v1) / t1</code></li>
+</ul>
+<pre><code>   v
+   ^
+v2 |   +---------+-
+   |  /          |
+va | /           |
+   |/            |
+v1 +-------------+--&gt; t
+       t1        t2
+</code></pre>
+<p><strong>eg.</strong> acceleration does not complete before 2nd sensor hit (<code>d/t &lt; v_avg</code>)</p>
+<ul>
+<li>actual average velocity during acceleration is <code>v_s = d / t</code></li>
+<li>velocity at 2nd sensor hit is <code>v_r = 2(v_s - v1) + v1</code></li>
+<li>acceleration is <code>(v_r - v1) / t</code></li>
+</ul>
+<pre><code>   v
+vr ^   +
+   |  /|
+vs | / |
+   |/  |
+v1 +---+-----------&gt; t
+       t
+</code></pre>
+<p>measuring stop distance:</p>
+<ul>
+<li>send stop command when sensor is triggered</li>
+<li>measure stop distance manually</li>
+</ul>
+<p>measuring stop time:</p>
+<ul>
+<li>compute using acceleration model</li>
+<li>manual binary search</li>
+<li>can use stop time + velocity to compute distance</li>
+</ul>
+<p>start:</p>
+<ul>
+<li>special case of acceleration</li>
+<li>measured based on known estimates for stop time/distance</li>
+<li>stop at known location, then start</li>
+<li>measure time to sensor</li>
+<li>can compute acceleration</li>
+</ul>
+<p>short moves:</p>
+<ul>
+<li>stop before reaching target velocity =&gt; dynamic calibration</li>
+<li>manual experiments with different (short) times between start and stop</li>
+</ul>
+<h3 id="latency">latency</h3>
+<p>latency analysis:</p>
+<ul>
+<li>program as graph =&gt; computation &amp; termination vs. control/service loop</li>
+<li>control/service loop: throughput vs latency
+<ul>
+<li>timing of edges: busy vs block</li>
+<li>throughput: compare avg busy cost of paths to offered load</li>
+<li>latency: consider both busy and blocked cost</li>
+</ul>
+</li>
+</ul>
+<p>average latency: no balancing between lower and higher latencies</p>
+<ul>
+<li>service loop: outliers change mean =&gt; potentially skews utility
+<ul>
+<li>late response is useless</li>
+</ul>
+</li>
+<li>control loop: mean masks outliers =&gt; potentially hides catastrophic problem
+<ul>
+<li>how often a train enters critical track section matters more than how much it overshoots</li>
+</ul>
+</li>
+<li>analysis must work with latency distribution
+<ul>
+<li>service loop: higher order percentile</li>
+<li>control loop: worst case latency</li>
+</ul>
+</li>
+<li>rarely relevant</li>
+</ul>
+<p>worst-case latency: WCET</p>
+<ul>
+<li>identify critical paths or worst-case execution path (WCEP)</li>
+<li>uncertainty:
+<ul>
+<li>busy (memory/cpu pipelining/caching)</li>
+<li>block (contributes to latency but not throughput)</li>
+<li>internal loops (bounds)</li>
+</ul>
+</li>
+<li>queueing:
+<ul>
+<li>standing queues (contributes to latency but not throughput)</li>
+<li>theory: latency increases as arrivals approach capacity</li>
+</ul>
+</li>
+<li>alternative model: <em>critical instant</em>
+<ul>
+<li>assume all events happen at same time; all tasks ready</li>
+<li>trace priority execution</li>
+</ul>
+</li>
+</ul>
+<p>automatic analysis:</p>
+<ul>
+<li>static analysis: np-hard</li>
+<li>hybrid: measure single feasible paths (SFP) and analyze combination</li>
+<li>record loop counts, recursion depths</li>
+</ul>
+<p>train control:</p>
+<ul>
+<li>preemptive scheduling: shortcut to loop start</li>
+<li>small tasks: shorter graph edges</li>
+<li>critical path is sensor event -&gt; action -&gt; effect</li>
+<li>preemption: keep uninterruptible kernel execution short</li>
+<li>priorities: support resource management via scheduling</li>
+</ul>
+<p>task priorities:</p>
+<ul>
+<li>critical path is sensor -&gt; uart -&gt; supervisor -&gt; engineer -&gt; track -&gt; uart -&gt; command</li>
+<li>priority determines worst-case latency</li>
+<li>priority is not as critical when utilization is low</li>
+<li>low-level tasks: use higher priority and/or buffer
+<ul>
+<li>low priority could lose interrupts or input</li>
+</ul>
+</li>
+</ul>
+<p>options for train control command loop:</p>
+<ul>
+<li>single-bank sensor queries - budget for train commands</li>
+<li>add uncertainty to sensor timing based on # of previous train commands</li>
+<li>ignore additional error, because it is small?</li>
+</ul>
+<h1 id="week-11-mar-21">Week 11. Mar 21</h1>
+<p>TC:</p>
+<ul>
+<li>add graceful exit command that stops everything</li>
+<li>light up trains</li>
+<li>start all trains from exit?</li>
+</ul>
+<p>context switch stress testing:</p>
+<ul>
+<li>tasks switch to each other</li>
+<li>task do expensive computations involving all registers</li>
+</ul>
+<h3 id="train-control">train control</h3>
+<p>scenarios:</p>
+<ul>
+<li>travel at constant speed =&gt; calibrate velocities</li>
+<li>travel at target velocity (avoid collision) =&gt; adjust speed</li>
+<li>travel in cohort =&gt; adjust speed but there are two trains to choose from</li>
+</ul>
+<p>sensor attributions =&gt; error margin for prediction</p>
+<ul>
+<li>expected time T ± error margin</li>
+<li>handle one error: either turnout or sensor</li>
+<li>add redundancy by listening to multiple sensors</li>
+</ul>
+<p>what if unexpected errors (timeouts) occur:</p>
+<ul>
+<li>good strategies: stop trains and print errors</li>
+<li>reality: run as much as possible?</li>
+<li>build independent subsystems</li>
+</ul>
+<p>deadlock: wait for random time an restart?</p>
+<p>path-finding:</p>
+<ul>
+<li>online
+<ul>
+<li>compute path using track/reserved node</li>
+<li>single-node dijkstra doable online (computing part + tracing part)</li>
+</ul>
+</li>
+<li>offline: determine loop-free alternative path with loop threshold</li>
+</ul>
+<h3 id="design-approach">design approach</h3>
+<p>decomposing problems:</p>
+<ul>
+<li>travel server:
+<ul>
+<li>manage travel plans with timing</li>
+<li>query for sensor attribution</li>
+</ul>
+</li>
+<li>sensor server
+<ul>
+<li>sends notification to train</li>
+</ul>
+</li>
+<li>route server</li>
+<li>reservation server
+<ul>
+<li>reservations must be continuous</li>
+<li>do not worry about timing</li>
+</ul>
+</li>
+<li>train task
+<ul>
+<li>source/dest: obtain route from route server</li>
+<li>file travel plan</li>
+<li>drive train
+<ul>
+<li>reserve/release track segments</li>
+<li>set train speeds</li>
+<li>switch reserved turnouts</li>
+<li>handle sensor and timeouts</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="priorityinterrupts">priority/interrupts</h3>
+<p>interrupts:</p>
+<ul>
+<li>want to avoid interrupts
+<ul>
+<li>but always want clock/timer interrupts</li>
+<li>uart tx: always try sending first, enable interrupt if cannot
+<ul>
+<li>can set ui things to have lower priority</li>
+</ul>
+</li>
+<li>uart rx: response needed
+<ul>
+<li>principle: should finish requests</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>want to avoid buffering in kernel</li>
+</ul>
+<p>priority inversion</p>
+<ul>
+<li>lower priority task indirectly keeps higher priority task from running</li>
+<li>can become latency problem</li>
+<li>can become correctness problem is system is fully loaded</li>
+<li>use dynamic priority</li>
+</ul>
+<h1 id="week-12-mar-28">Week 12. Mar 28</h1>
+<h2 id="real-time-cpu-scheduling">real-time cpu scheduling</h2>
+<p>special-purpose vs general-purpose systems:</p>
+<ul>
+<li>special-purpose: hardware, os, application co-design
+<ul>
+<li>control/VR</li>
+<li>predictability</li>
+</ul>
+</li>
+<li>general-purpose: hardware, os, application decoupled
+<ul>
+<li>performance, throughput and liveness</li>
+</ul>
+</li>
+</ul>
+<p>types of realtime:</p>
+<ul>
+<li>'hard' RT: 'no delay', no deadline misses</li>
+<li>'firm' RT: rare deadline misses</li>
+<li>'near' RT: some variation and misses are ok</li>
+<li>'soft' RT: statistical distribution of delay is ok, some degradation is ok</li>
+</ul>
+<p>efficiency vs latency tradeoff:</p>
+<ul>
+<li>also modeled as pipeline (buffer/queue) vs. run-to-completion</li>
+</ul>
+<p><em>cyclic executive</em> (polling loop):</p>
+<ul>
+<li>target should be larger than max iteration time if all flags are true to prevent overheat</li>
+<li>limited monolith</li>
+</ul>
+<pre><code class="language-cpp"><span class="hljs-keyword">for</span> (;;) {
+    t = <span class="hljs-built_in">current_time</span>();
+    <span class="hljs-keyword">if</span> (<span class="hljs-number">1</span>) ...
+    ...
+    <span class="hljs-built_in">sleep</span>(t + target - <span class="hljs-built_in">current_time</span>());
+}
+</code></pre>
+<p>real-time task scheduling:</p>
+<ul>
+<li>task destruction: periodic vs aperiodic</li>
+<li>admission control: set of feasible</li>
+<li>selection mechanism: scheduler</li>
+</ul>
+<p>liu/layland (1973):</p>
+<ul>
+<li>rate-monotonic (RM) scheduling
+<ul>
+<li>full and immediate preemption</li>
+<li>periodic tasks</li>
+<li>deadline = around time of next request</li>
+<li>static role-monotonic priority =&gt; task priority accord to actual frequency</li>
+<li>admission test: if total utilization &lt; 70%, then scheduler will guarantee all deadlines</li>
+</ul>
+</li>
+<li>earliest deadline first (ddf):
+<ul>
+<li>get optimal admission if util &lt; 100%</li>
+<li>algos exist to bring down complexity of sorting</li>
+</ul>
+</li>
+<li>only works for one processor</li>
+</ul>
+<p>multiprocessor scheduling: np-hard</p>
+<p>linux objectives:</p>
+<ul>
+<li>hardware interrupts arbitrated by interrupt controller service</li>
+<li>synchronization =&gt; memory allocation (priority inversion)</li>
+<li>work conservation</li>
+<li>time-slicing preemption for fairness</li>
+<li>interrupt mitigation</li>
+</ul>
+<h1 id="week-13-apr-4">Week 13. Apr 4</h1>
+<h2 id="multi-core-programming">multi-core programming</h2>
+<p>parallelism:</p>
+<ul>
+<li>unknown and nondeterministic execution ordering</li>
+<li>asynchronous memory access</li>
+<li>need: atomicity and memory ordering</li>
+<li>want: critical section (ACI)</li>
+</ul>
+<p>without atomic ops, use <em>dekker's algo</em>:</p>
+<pre><code class="language-c"><span class="hljs-comment">// shared state</span>
+<span class="hljs-type">int</span> turn = <span class="hljs-number">0</span>;
+<span class="hljs-type">int</span> wantIn[<span class="hljs-number">2</span>] = {<span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>};  <span class="hljs-comment">// bool</span>
+
+<span class="hljs-comment">// thread init</span>
+<span class="hljs-type">int</span> me = <span class="hljs-number">0</span>;
+<span class="hljs-type">int</span> you = <span class="hljs-number">1</span>;
+
+<span class="hljs-comment">// thread critical section</span>
+wantIn[me] = <span class="hljs-literal">true</span>;
+<span class="hljs-keyword">while</span> (wantIn[you]) {
+    <span class="hljs-keyword">if</span> (turn != me) {
+        wantIn[me] = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">while</span> (turn != me) { <span class="hljs-comment">/* wait */</span> }
+        wantIn[me] = <span class="hljs-literal">true</span>;
+    }
+}
+<span class="hljs-comment">// critical code ...</span>
+turn = you;
+wantIn[me] = <span class="hljs-literal">false</span>;
+</code></pre>
+<p>with atomic RMW operations (atomic increment, test-set etc.), use <em>ticket lock</em>:</p>
+<pre><code class="language-c"><span class="hljs-comment">// shared state</span>
+<span class="hljs-type">int</span> ticket = <span class="hljs-number">0</span>;
+<span class="hljs-type">int</span> serving = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">// thread critical section</span>
+<span class="hljs-type">int</span> myTicket = ticket++;
+<span class="hljs-keyword">while</span> (myTicket != serving) { <span class="hljs-comment">/* wait */</span> }
+<span class="hljs-comment">// critical code</span>
+serving++;
+</code></pre>
+<h3 id="memory-ordering">memory ordering</h3>
+<p><strong>eg.</strong></p>
+<pre><code class="language-c"><span class="hljs-comment">// shared state</span>
+<span class="hljs-type">int</span> a = <span class="hljs-number">0</span>, b = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">// thread 1</span>
+a = <span class="hljs-number">1</span>;
+print(b);
+
+<span class="hljs-comment">// thread 2</span>
+b = <span class="hljs-number">1</span>;
+print(a);
+</code></pre>
+<p>outcome of 00 is possible because of delayed writes.</p>
+<p><em>TSO (total store order)</em>:</p>
+<ul>
+<li>classic memory model</li>
+<li>writes can be deferred before reads</li>
+<li>write conflicts are never reordered</li>
+<li>(permits 00 in example)</li>
+</ul>
+<p><em>memory barriers</em> (fences): special instructions to enforce memory ordering</p>
+<ul>
+<li>blocks pipelines and turn TSO to total order</li>
+</ul>
+<pre><code class="language-c"><span class="hljs-comment">// thread critical section</span>
+wantIn[me] = <span class="hljs-literal">true</span>;
+fence;
+<span class="hljs-keyword">while</span> (wantIn[you]) {
+    <span class="hljs-keyword">if</span> (turn != me) {
+        wantIn[me] = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">while</span> (turn != me) { <span class="hljs-comment">/* wait */</span> }
+        wantIn[me] = <span class="hljs-literal">true</span>;
+        fence;
+    }
+}
+</code></pre>
+<p><em>sequential consistency</em>:</p>
+<ul>
+<li>processor order - loads and stores</li>
+<li>some total order - interleaving</li>
+<li>SC = TSO + fences</li>
+<li>(cannot have 00 in example)</li>
+</ul>
+<p>ticket lock:</p>
+<pre><code class="language-c"><span class="hljs-comment">// thread critical section</span>
+<span class="hljs-type">int</span> myTicket = ticket++;
+<span class="hljs-keyword">while</span> (myTicket != serving) { <span class="hljs-comment">/* wait */</span> }
+fence;
+<span class="hljs-comment">// critical code</span>
+fence;
+serving++;
+</code></pre>
+<p>x86 atomics have fence semantics.</p>
+<p>volatile:</p>
+<ul>
+<li>C volatile forbids compiler optimization/reordering</li>
+<li>java volatile ensures sequential consistency</li>
+</ul>
+<p>we use atomic instructions to ensure parallelism and fence for memory ordering.</p>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>

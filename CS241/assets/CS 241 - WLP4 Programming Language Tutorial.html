@@ -1,0 +1,278 @@
+<html data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, embed[type="application/pdf"] {
+    filter: invert(100%) hue-rotate(180deg) brightness(150%) contrast(75%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}</style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #323436 !important;
+}
+html, body, input, textarea, select, button {
+    background-color: #323436;
+}
+html, body, input, textarea, select, button {
+    border-color: #a69c8b;
+    color: #ffffff;
+}
+a {
+    color: #54ccff;
+}
+table {
+    border-color: #7e878b;
+}
+::placeholder {
+    color: #f6ede0;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #7f8713 !important;
+    color: #ffffff !important;
+}
+::-webkit-scrollbar {
+    background-color: #3c4041;
+    color: #ede4d6;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #6b7175;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #828b90;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #6f777a;
+}
+::-webkit-scrollbar-corner {
+    background-color: #323436;
+}
+* {
+    scrollbar-color: #3c4041 #6b7175;
+}
+::selection {
+    background-color: #1375ec !important;
+    color: #ffffff !important;
+}
+::-moz-selection {
+    background-color: #1375ec !important;
+    color: #ffffff !important;
+}</style><title>CS 241 - WLP4 Programming Language Tutorial</title><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #b07d00 !important;
+    border-color: #fff32b !important;
+    color: #ffffff !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}</style></head>
+<body cz-shortcut-listen="true">
+<h1><a href="https://www.student.cs.uwaterloo.ca/~cs241/">CS 241</a> - WLP4 Programming Language Tutorial</h1>
+
+<h3>WLP4 in a nutshell for C or C++ Programmers</h3>
+
+A WLP4 program is a sequence of C++ functions (we use the terms 'procedure'
+and 'function' interchangeably in this document), the last of which is is the
+main function and is called <tt>wain</tt>.  Functions may have any number of
+parameters, but the main function <tt>wain</tt> has two parameters. The type of
+the first parameter of <tt>wain</tt> is either <tt>int</tt> or <tt>int*</tt>.
+The type of the second parameter of <tt>wain</tt> is <tt>int</tt>. The type of
+the result of every procedure is <tt>int</tt>.
+<p>
+Declarations,  control structures and statements that may be 
+used in WLP4 are restricted to:
+</p><ul>
+<li><tt>int </tt> or <tt>int*</tt><i>(declaration of a single int or 
+int* variable with an unsigned integer constant or NULL initializer; all
+ declarations in WLP4 must precede all statements and control 
+structures; every declaration must include an integer constant or NULL 
+initializer)</i>
+</li><li><tt>if </tt><i>(must have an else clause)</i><tt>
+</tt></li><li><tt>while 
+</tt></li><li><tt>return </tt><i>(must be the last statement in function)</i><tt>
+</tt></li><li><tt>println
+</tt></li><li><tt>=</tt> <i>(i.e. assignment)</i><tt>
+</tt></li><li><tt>delete []</tt> <i>(i.e. deallocation)</i>
+</li></ul>
+The clauses of <tt>if</tt> and <tt>while</tt>
+containing statements must be enclosed in 
+braces (i.e. {}).
+<p>
+Expressions may contain only variable names,
+integers (written in decimal without a sign), function calls, memory allocation
+(i.e., operator <tt>new</tt>),
+unary <tt>&amp;</tt> and <tt>*</tt>, and
+the binary (two operand) versions of
+the following operators:
+</p><pre>    + - * / % == != &lt;= &gt;= &lt; &gt;
+</pre>
+Arrays of consecutive integers may be dynamically allocated using
+<tt>new</tt> and <tt>delete []</tt>, but their elements can be accessed only
+using pointer dereferences, because
+WLP4 does not include the C++ operator <tt>[]</tt>.
+The // notation (and only the // notation) may
+be used for comments.
+
+<h3>Example WLP4 Program</h3>
+
+<pre>//
+// WLP4 Program to compute:
+//   a^b if 0 &lt;= a,b &lt; 10
+//   -1 otherwise
+//
+
+int wain(int a, int b) {
+   int counter = 0;
+   int product = 0;
+   product = 0-1;  // only binary minus
+   if (a &gt;= 0) {
+      if (b &gt;= 0) {
+         if (a &lt; 10) {
+            if (b &lt; 10) {
+               product = 1;
+               counter = 0;
+               while (counter &lt; b) {
+                  product = product * a;
+                  counter = counter + 1;
+               }
+            } else {} // must have else
+         } else {} 
+      } else {} 
+   } else {}
+   return product;
+}
+</pre>
+
+<h2>Notable differences between WLP4 and C/C++</h2>
+<h3>Functions</h3>
+Functions in WLP4 can only have one return statement, which must be at the very end.
+<pre>int max(int a, int b){
+  if (a &gt; b){
+    return a; // cannot return here
+  } else {
+    return b; // or here
+  }
+  // must return here
+}
+</pre>
+Fixed for WLP4, the above code looks like this:
+
+<pre>int max(int a, int b){
+  int answer = 0;
+  if (a &gt; b){
+    answer = a;
+  } else {
+    answer = b;
+  }
+  return answer;
+}
+</pre>
+<h3>Local Variable Declarations</h3>
+Within a function body, all the local variables must be declared at the beginning of the function, before any other code.
+<br>
+Variables can only be initialized to a single number or NULL.
+<pre>int average(int a, int b){
+  int sum = 0;
+  sum = a + b;
+  int average = sum / 2;
+  return average;
+}
+</pre>
+
+Fixed for WLP4:
+
+<pre>int average(int a, int b){
+  int sum = 0;
+  int average = 0;
+  sum = a + b;
+  average = sum / 2;
+  return average;
+}
+</pre>
+<h3>if-statements</h3>
+
+if-statements must have an else statement (though it can be empty).
+
+The conditions for an if or a while must be singular - 
+logical AND (&amp;&amp;) and OR (||) do not exist in WLP4.
+
+There is no else if in WLP4.
+<pre>int max3(int a, int b, int c){
+  int answer = 0;
+  if (a &gt; b &amp;&amp; a &gt; c){ // cannot use "&amp;&amp;"
+    answer = a;
+  } else if (b &gt; a &amp;&amp; b &gt; c){ // or "else if"
+    answer = b;
+  } else {
+    answer = c;
+  }
+  return answer;
+}
+</pre>
+
+Fixed for WLP4:
+
+<pre>int max3(int a, int b, int c){
+  int answer = 0;
+  if (a &gt; b) {
+    if (a &gt; c) {
+      answer = a;
+    } else {
+      answer = c;
+    }
+  } else {
+    if (b &gt; c){
+      answer = b;
+    } else {
+      answer = c;
+    }
+  }
+  return answer;
+}
+</pre>
+
+<h3>Arrays</h3>
+There are no "arrays" in WLP4, though pointers can be dereferenced to achieve the same effect.
+<pre>int getlast(int* begin, int size){
+  return begin[size - 1]; 
+}
+</pre>
+
+Fixed for WLP4:
+
+<pre>int getlast(int* begin, int size){
+  return *(begin + size - 1); 
+}
+</pre>
+
+
+</body></html>

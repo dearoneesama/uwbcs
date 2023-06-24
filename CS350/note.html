@@ -1,0 +1,2893 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Week 1&period; May 11</title>
+        <style>
+/* From extension vscode.markdown-math */
+@font-face{font-family:KaTeX_AMS;src:url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(fonts/KaTeX_AMS-Regular.woff) format("woff"),url(fonts/KaTeX_AMS-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Caligraphic;src:url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:KaTeX_Caligraphic;src:url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Fraktur;src:url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:KaTeX_Fraktur;src:url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(fonts/KaTeX_Main-Bold.woff) format("woff"),url(fonts/KaTeX_Main-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype");font-weight:700;font-style:italic}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(fonts/KaTeX_Main-Italic.woff) format("woff"),url(fonts/KaTeX_Main-Italic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:KaTeX_Main;src:url(fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(fonts/KaTeX_Main-Regular.woff) format("woff"),url(fonts/KaTeX_Main-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Math;src:url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype");font-weight:700;font-style:italic}@font-face{font-family:KaTeX_Math;src:url(fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(fonts/KaTeX_Math-Italic.woff) format("woff"),url(fonts/KaTeX_Math-Italic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:"KaTeX_SansSerif";src:url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:"KaTeX_SansSerif";src:url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:"KaTeX_SansSerif";src:url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Script;src:url(fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(fonts/KaTeX_Script-Regular.woff) format("woff"),url(fonts/KaTeX_Script-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size1;src:url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size1-Regular.woff) format("woff"),url(fonts/KaTeX_Size1-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size2;src:url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size2-Regular.woff) format("woff"),url(fonts/KaTeX_Size2-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size3;src:url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size3-Regular.woff) format("woff"),url(fonts/KaTeX_Size3-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Size4;src:url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size4-Regular.woff) format("woff"),url(fonts/KaTeX_Size4-Regular.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:KaTeX_Typewriter;src:url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype");font-weight:400;font-style:normal}.katex{font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;text-indent:0;text-rendering:auto;border-color:currentColor}.katex *{-ms-high-contrast-adjust:none!important}.katex .katex-version:after{content:"0.13.0"}.katex .katex-mathml{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-weight:700;font-style:italic}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{display:inline-table;table-layout:fixed;border-collapse:collapse}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;vertical-align:bottom;position:relative}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;vertical-align:bottom;font-size:1px;width:2px;min-width:2px}.katex .vbox{display:inline-flex;flex-direction:column;align-items:baseline}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{width:0;max-width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{display:inline-block;width:100%;border-bottom-style:solid}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .clap,.katex .llap,.katex .rlap{width:0;position:relative}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{display:inline-block;border:0 solid;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{display:inline-block;width:100%;border-bottom-style:solid}.katex .hdashline{display:inline-block;width:100%;border-bottom-style:dashed}.katex .sqrt>.root{margin-left:.27777778em;margin-right:-.55555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.83333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.16666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.66666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.45666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.14666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.71428571em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.85714286em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.14285714em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.28571429em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.42857143em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.71428571em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.05714286em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.46857143em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.96285714em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.55428571em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.55555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.66666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.77777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.88888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.11111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.30444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.76444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.41666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.58333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.66666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.83333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.72833333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.07333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.34722222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.41666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.48611111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.55555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.69444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.83333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.44027778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.72777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.28935185em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.34722222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.40509259em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.46296296em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.52083333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.69444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.83333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.20023148em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.43981481em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.24108004em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.28929605em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.33751205em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.38572806em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.43394407em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.48216008em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.57859209em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.69431051em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.83317261em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.19961427em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.20096463em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.24115756em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.28135048em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.32154341em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.36173633em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.40192926em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.48231511em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.57877814em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.69453376em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.83360129em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{display:block;position:absolute;width:100%;height:inherit;fill:currentColor;stroke:currentColor;fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1}.katex svg path{stroke:none}.katex img{border-style:none;min-width:0;min-height:0;max-width:none;max-height:none}.katex .stretchy{width:100%;display:block;position:relative;overflow:hidden}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{width:100%;position:relative;overflow:hidden}.katex .halfarrow-left{position:absolute;left:0;width:50.2%;overflow:hidden}.katex .halfarrow-right{position:absolute;right:0;width:50.2%;overflow:hidden}.katex .brace-left{position:absolute;left:0;width:25.1%;overflow:hidden}.katex .brace-center{position:absolute;left:25%;width:50%;overflow:hidden}.katex .brace-right{position:absolute;right:0;width:25.1%;overflow:hidden}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{box-sizing:border-box;border:.04em solid}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{box-sizing:border-content;border-top:.049em solid;border-right:.049em solid;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{counter-increment:katexEqnNo;content:"(" counter(katexEqnNo) ")"}.katex .mml-eqn-num:before{counter-increment:mmlEqnNo;content:"(" counter(mmlEqnNo) ")"}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;position:absolute;left:calc(50% + .3em);text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{text-align:left;padding-left:2em}body{counter-reset:katexEqnNo mmlEqnNo}
+
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.katex-error {
+	color: var(--vscode-editorError-foreground);
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <p>Page: <a href="https://student.cs.uwaterloo.ca/~cs350/S21/">https://student.cs.uwaterloo.ca/~cs350/S21/</a></p>
+<p>Instructor: Lesley Istead</p>
+<p>Time: T,Th 11:15am-12:40pm</p>
+<ul>
+<li><a href="#week-1-may-11">Week 1. May 11</a></li>
+<li><a href="#week-2-may-18">Week 2. May 18</a></li>
+<li><a href="#week-3-may-25">Week 3. May 25</a></li>
+<li><a href="#week-4-june-1">Week 4. June 1</a></li>
+<li><a href="#week-5-june-8">Week 5. June 8</a></li>
+<li><a href="#week-6-june-15">Week 6. June 15</a></li>
+<li><a href="#week-7-june-22">Week 7. June 22</a></li>
+<li><a href="#week-8-june-29">Week 8. June 29</a></li>
+<li><a href="#week-9-july-6">Week 9. July 6</a></li>
+<li><a href="#week-10-july-13">Week 10. July 13</a></li>
+<li><a href="#week-11-july-20">Week 11. July 20</a></li>
+<li><a href="#week-12-july-27">Week 12. July 27</a></li>
+<li><a href="#opt-aug-3">Opt. Aug 3</a></li>
+</ul>
+<h1 id="week-1-may-11">Week 1. May 11</h1>
+<p>normal = (.02 * A0 + .1 * A1 + .15 * A2 + .13 * A3) + .075 * R1 + .075 * R2 + .1Q + .35F</p>
+<p>OS/161 essentials:</p>
+<ul>
+<li><a href="https://student.cs.uwaterloo.ca/~cs350/common/Install161.html">Install161</a></li>
+<li><a href="https://student.cs.uwaterloo.ca/~cs350/common/Install161NonCS.html">Install161NonCS</a></li>
+<li><a href="https://student.cs.uwaterloo.ca/~cs350/common/WorkingWith161.html">WorkingWith161</a></li>
+<li><a href="https://student.cs.uwaterloo.ca/~cs350/common/gdb.html">gdb</a></li>
+<li><a href="https://student.cs.uwaterloo.ca/~cs350/common/os161-man/">os161-man</a></li>
+<li><a href="https://student.cs.uwaterloo.ca/~cs350/common/sys161manual/">sys161-man</a></li>
+</ul>
+<p><strong>defn.</strong> generally, an OS is a system that</p>
+<ul>
+<li>manages resources</li>
+<li>creates execution environments</li>
+<li>load programs</li>
+<li>provides common services and utilities</li>
+</ul>
+<p>three views of an OS:</p>
+<ul>
+<li>application view: what services does it provide?
+<ul>
+<li>provides resources</li>
+<li>provides interfaces which provide simplified, abstract view of hardware to apps</li>
+<li>isolates running programs</li>
+</ul>
+</li>
+<li>system view: what problems does it solve?
+<ul>
+<li>manages the hardware resources</li>
+<li>allocates resources among running programs</li>
+<li>control the sharing of resources</li>
+</ul>
+</li>
+<li>implementation view
+<ul>
+<li>concurrency</li>
+<li>real-time</li>
+</ul>
+</li>
+</ul>
+<p><strong>defn.</strong> the kernel is the part of the operating system that responds to system calls, interrupts and exceptions</p>
+<p><strong>defn.</strong> monolithic kernel: includes device drives, file system, virtual memory, IPC, etc</p>
+<p><strong>defn.</strong> microkernel: only absolutely necessary components are a part of the kernel. all other elements are user programs (QNX)</p>
+<p><strong>defn.</strong> real-time OS: an OS with stringent event response times, guarantees, and preemptive scheduling (QNX)</p>
+<h2 id="threads-and-concurrency">threads and concurrency</h2>
+<ul>
+<li>sequence of instruction</li>
+<li>a normal sequential program consists of a single thread of execution</li>
+<li>threads provide a way to express concurrency</li>
+<li>in threaded application there are multiple threads of execution occurring at the same time
+<ul>
+<li>threads may perform the same task</li>
+<li>threads may perform different tasks</li>
+</ul>
+</li>
+</ul>
+<p>reasons to use threads:</p>
+<ul>
+<li>resource utilization: eg. blocked/waiting threads give up CPU, etc.</li>
+<li>parallelism</li>
+<li>responsiveness: eg. dedicated threads to UI</li>
+<li>priority: higher priority more CPU time</li>
+<li>modularization</li>
+</ul>
+<h3 id="os161-thread-interface">OS/161 thread interface</h3>
+<pre><code class="language-c"><div><span class="hljs-comment">// kern/include/thread.h</span>
+<span class="hljs-comment">// creation</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">thread_fork</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name, struct proc *proc, <span class="hljs-keyword">void</span> (*func)(<span class="hljs-keyword">void</span> *, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span>), <span class="hljs-keyword">void</span> *data1, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> data2)</span></span>;
+<span class="hljs-comment">// termination</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">thread_exit</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+<span class="hljs-comment">// yielding</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">thread_yield</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+</div></code></pre>
+<p>other thread libraries:</p>
+<ul>
+<li>pthread</li>
+<li>OpenMP</li>
+<li>GPGPU programming eg. CUDA</li>
+</ul>
+<h3 id="review-mips-registers">review: MIPS registers</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">num</th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">use</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">num</th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">z0</td>
+<td style="text-align:center">always zero</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">24,25</td>
+<td style="text-align:center">t8,t9</td>
+<td style="text-align:center">temps (caller-save)</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">at</td>
+<td style="text-align:center">assembler reserved</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">26,27</td>
+<td style="text-align:center">k0,k1</td>
+<td style="text-align:center">kernel temps</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">v0</td>
+<td style="text-align:center">return val/syscall #</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">gp</td>
+<td style="text-align:center">global ptr</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">return val</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">29</td>
+<td style="text-align:center">sp</td>
+<td style="text-align:center">stack ptr</td>
+</tr>
+<tr>
+<td style="text-align:center">4-7</td>
+<td style="text-align:center">a0-a3</td>
+<td style="text-align:center">subroutine args</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">s8/fp</td>
+<td style="text-align:center">frame ptr (callee-save)</td>
+</tr>
+<tr>
+<td style="text-align:center">8-15</td>
+<td style="text-align:center">t0-t7</td>
+<td style="text-align:center">temps (caller-save)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">31</td>
+<td style="text-align:center">ra</td>
+<td style="text-align:center">return addr (<code>jal</code>)</td>
+</tr>
+<tr>
+<td style="text-align:center">16-23</td>
+<td style="text-align:center">s0-s7</td>
+<td style="text-align:center">saved (callee-save)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>convention enforced in compiler; used in OS</li>
+<li><em>caller-save</em>: calling function to save/restore values in these registers</li>
+<li><em>callee-save</em>: called function to ...</li>
+</ul>
+<h3 id="concurrent-program-execution-two-threads">concurrent program execution (two threads)</h3>
+<pre><code><code><div>                   +--------------------+
+   +---------------+ thread 2 CPU       |
+   |   PC          | Registers          +-----+
+   |               +--------------------+     |
+   |                                          |SP
++--|------------------------------------------|----------------+
+|--v---++-------+                       +-----v---++---------+ |
+||code ||data   |    address space      |thd stack||thd stack| |
+|--^---++-------+     (shared)          +---------++-----^---+ |
++--|-----------------------------------------------------|-----+
+   |                                                  SP |
+   |               +----------------------+              |
+   |    PC         | thread 1 CPU         |              |
+   +---------------+ Registers            +--------------+
+                   +----------------------+
+</div></code></code></pre>
+<h3 id="implementing-concurrent-threads">implementing concurrent threads:</h3>
+<p>options</p>
+<ul>
+<li>hardware support: P processors, C cores, M multithreading per core -&gt; PCM threads simultaneously</li>
+<li>timesharing</li>
+<li>hardware support + timesharing</li>
+</ul>
+<h3 id="timesharing">timesharing</h3>
+<ul>
+<li>when timesharing, the switch from one thread to another is called a <em>context switch</em>
+<ol>
+<li>decide which thread will run next (scheduling)</li>
+<li>save register contents of current thread</li>
+<li>load register contents of next thread</li>
+</ol>
+</li>
+<li><em>thread context</em> must be saved/restored carefully since thread execution continuously changes the context</li>
+</ul>
+<h1 id="week-2-may-18">Week 2. May 18</h1>
+<h2 id="context-switch">context switch</h2>
+<p>context switch in MIPS</p>
+<pre><code class="language-c"><div><span class="hljs-comment">/* kern/arch/mips/thread/switch.S */</span>
+switchframe_switch:
+   <span class="hljs-comment">/*
+    * a0 contains the address of the switchframe pointer in the old thread.
+    * a1 contains the address of the switchframe pointer in the new thread.
+    */</span>
+
+   <span class="hljs-comment">/* Allocate stack space for saving 10 registers. 10*4 = 40 */</span>
+   addi sp, sp, <span class="hljs-number">-40</span>
+
+   <span class="hljs-comment">/* Save the registers */</span>
+   sw   ra, <span class="hljs-number">36</span>(sp)
+   sw   gp, <span class="hljs-number">32</span>(sp)
+   sw   s8, <span class="hljs-number">28</span>(sp)
+   sw   s6, <span class="hljs-number">24</span>(sp)
+   sw   s5, <span class="hljs-number">20</span>(sp)
+   sw   s4, <span class="hljs-number">16</span>(sp)
+   sw   s3, <span class="hljs-number">12</span>(sp)
+   sw   s2, <span class="hljs-number">8</span>(sp)
+   sw   s1, <span class="hljs-number">4</span>(sp)
+   sw   s0, <span class="hljs-number">0</span>(sp)
+
+   <span class="hljs-comment">/* Store the old stack pointer in the old thread */</span>
+   sw   sp, <span class="hljs-number">0</span>(a0)
+
+   <span class="hljs-comment">/* Get the new stack pointer from the new thread */</span>
+   lw   sp, <span class="hljs-number">0</span>(a1)
+   nop           <span class="hljs-comment">/* _delay slot_ for load (because load is slow in pipeline) */</span>
+
+   <span class="hljs-comment">/* Now, restore the registers */</span>
+   lw   s0, <span class="hljs-number">0</span>(sp)
+   lw   s1, <span class="hljs-number">4</span>(sp)
+   lw   s2, <span class="hljs-number">8</span>(sp)
+   lw   s3, <span class="hljs-number">12</span>(sp)
+   lw   s4, <span class="hljs-number">16</span>(sp)
+   lw   s5, <span class="hljs-number">20</span>(sp)
+   lw   s6, <span class="hljs-number">24</span>(sp)
+   lw   s8, <span class="hljs-number">28</span>(sp)
+   lw   gp, <span class="hljs-number">32</span>(sp)
+   lw   ra, <span class="hljs-number">36</span>(sp)
+   nop                  <span class="hljs-comment">/* delay slot for load (not needed?) */</span>
+
+   <span class="hljs-comment">/* and return. */</span>
+   j ra                 <span class="hljs-comment">/* jump to new thread */</span>
+   addi sp, sp, <span class="hljs-number">40</span>      <span class="hljs-comment">/* in delay slot */</span>
+   .end switchframe_switch
+</div></code></pre>
+<p>the caller of <code>switchframe_switch()</code> has to save t registers (kern/thread/thread.c:<code>thread_switch</code>).</p>
+<h3 id="reasons-of-context-switch">reasons of context switch:</h3>
+<ul>
+<li><code>thread_yield()</code></li>
+<li><code>thread_exit()</code></li>
+<li>running thread blocks via a call to <code>wchan_sleep()</code></li>
+<li>running is preempted (involuntarily stops running)</li>
+</ul>
+<h3 id="thread-states">thread states</h3>
+<p>ready, running, blocked</p>
+<pre><code><code><div>+----------------+          preemption or thread_yield()         +------------------+
+|  ready         |  &lt;------------------------------------------  |   running        |
+|                |                                               |                  |
++----------------+  ------------------------------------------&gt;  +------------------+
+                                   dispatch
+        ^                                                                 |
+        |                                                                 |
+        | resource avail                                        resource  |
+        | or                                                    not avail |
+        | wake_all/one()                                        or        |
+        |                                                       sleep()   |
+        |                      +--------------------+                     |
+        +--------------------  |   blocked          |  &lt;------------------+
+                               |                    |
+                               +--------------------+
+                                    wait channels
+</div></code></code></pre>
+<h3 id="voluntarily-context-switch">voluntarily context switch</h3>
+<ul>
+<li>programs calls <code>thread_yield()</code>
+<ul>
+<li>which calls <code>thread_switch()</code>
+<ul>
+<li>which chooses a new thread and calls <code>switchframe_switch()</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="timesharing-and-preemption">timesharing and preemption</h3>
+<ul>
+<li>timesharing - the <em>scheduling quantum</em> is an upper bound on how long a thread can run before it must yield the CPU</li>
+<li>how to stop a running thread that never yields/blocks/exits when the quantum expires?
+<ul>
+<li><em>preemption</em> forces a running thread to stop</li>
+<li>to implement it, the thread library must have a means of &quot;getting control&quot; (causing thread lib code to run) even if the running thread has not called thread lib function</li>
+<li>it is normally accomplished using <em>interrupts</em>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="interrupt">interrupt</h3>
+<ul>
+<li>an <em>interrupt</em> is an event that occurs during the execution of a program</li>
+<li>caused by hardware eg timer, disks controller, a network interface</li>
+<li>then hardware automatically transfers control to a fixed location in memory
+<ul>
+<li>thread lib places a procedure called an <em>interrupt handler</em> at that mem loc</li>
+<li>which create a <em>trap frame</em> to record thread context at the time of interrupt
+<ul>
+<li>has to backup all registers (before interrupt)</li>
+</ul>
+</li>
+<li>determines which device caused in the interrupt and performs device-specific processing</li>
+<li>restores the saved thread context from the trap frame and resumes execution of the thread</li>
+</ul>
+</li>
+</ul>
+<p>a preemptive scheduler uses the scheduling quantum to impose a time limit on running threads</p>
+<ul>
+<li>periodic timer interrupts can track thread run time</li>
+<li>if thread has run too long, timer interrupt handler preempts the thread by <code>thread_yield()</code>
+<ul>
+<li>similar to voluntary...</li>
+<li>preempted thread changes state from running to ready and is placed on the <em>ready queue</em></li>
+<li>each time a thread goes from ready to running, runtime is 0 (not accumulating)</li>
+</ul>
+</li>
+<li>otherwise thread may block or yield before their quantum expiry</li>
+</ul>
+<p>os/161 threads use preemptive round-robin scheduling.</p>
+<p><strong>eg.</strong> interruption</p>
+<pre><code><code><div>       thd 1 (interrupted)                     thd2 (take on)
++----------------------------+        |                            |   0x0
+|     switchframe_switch()   |        |                            |
+|----------------------------|        |                            |
+|       thread_switch()      |        |                            |
+|----------------------------|        |                            |
+|       thread_yield()       |        |     switchframe_switch()   |
+|----------------------------|        |----------------------------|
+|  interrupt hdler frame(s)  |        |       thread_switch()      |
+|----------------------------|        |----------------------------|   ^
+|          trap frame        |        |       thread_yield()       |   |
+|----------------------------|        |----------------------------|   |
+|... program stack frame ... |        |... program stack frame ... |   |
+</div></code></code></pre>
+<p>questions:</p>
+<ul>
+<li>when interrupt happens, first save trap frame, then call yield to save callee-save registers. are we saving same thing twice? no, the first one is before interrupt and the second one is after.</li>
+</ul>
+<p><strong>eg.</strong></p>
+<pre><code class="language-cpp"><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{ helper(<span class="hljs-literal">NULL</span>, <span class="hljs-number">0</span>); }
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">helper</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> i)</span> </span>{
+    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">3</span>) {
+        kprintf(<span class="hljs-string">&quot;%ld&quot;</span>, i);
+        thread_fork(<span class="hljs-string">&quot;helper1&quot;</span>, <span class="hljs-literal">NULL</span>, helper, <span class="hljs-literal">NULL</span>, i+<span class="hljs-number">1</span>);
+        thread_fork(<span class="hljs-string">&quot;helper2&quot;</span>, <span class="hljs-literal">NULL</span>, helper, <span class="hljs-literal">NULL</span>, i+<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>)
+        kprintf(<span class="hljs-string">&quot;%ld&quot;</span>, i);
+    thread_exit();
+}
+<span class="hljs-comment">/*
+ which following outputs are not possible?
+ a) 01221220
+ b) 01120222
+ c) 01342560   x  flow stops when i==3
+ d) 01222120   x  cannot have three 2&#x27;s after one fork (at most 2)
+ e) 01122220
+ f) 01234560   x  flow stops when i==3
+ g) 01212220
+ h) 00112222
+*/</span>
+</div></code></pre>
+<p><strong>eg.</strong></p>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">for</span> i = i, N:
+    busy(C ms)
+    sleep(S ms)
+</div></code></pre>
+<p>there is one processor and two threads running the program. assume C &lt; quantum and C &lt; S. they run at t=0, at which time do they finish at first time? answer: N(C + S) + C</p>
+<pre><code><code><div>let C = xx, S = yyy
+
+th0| xxyyy|xxyyy|xxyyy| ... |xxyyy
+th1|   xxy|yyxxy|yyxxy| ... |  xxy|yy
+</div></code></code></pre>
+<p>what if C &gt; S? answer: 2NC + S</p>
+<pre><code><code><div>let C = xxx, S = yy, extra waiting = _
+
+th0| xxx|yy_|xxx|yy_|xxx|yy_| ... |xxx|yy_
+th1|     xxx|yy_|xxx|yy_|xxx| ... |yy_|xxx|yy
+</div></code></code></pre>
+<h1 id="week-3-may-25">Week 3. May 25</h1>
+<h2 id="synchronization">synchronization</h2>
+<ul>
+<li>all threads share access to the program's global variables and the heap</li>
+<li>the part of concurrent program in which a shared object is accessed is a <em>crital session</em></li>
+<li><em>race condition</em> is when the program result depends on the order of execution.
+<ul>
+<li>occur when multiple threads are reading and writing the same memory at the same time</li>
+<li>can happen due to context switch or concurrent access by multiple cpus</li>
+<li>constants and memory that all thread only read do not cause race conditions</li>
+</ul>
+</li>
+</ul>
+<h3 id="spin-lock-acquire-and-release">(spin) lock acquire and release</h3>
+<p>hardware-specific synchronization instructions:</p>
+<ul>
+<li>provide way to implement atomic <em>test-and-set</em> for synchronization primitives like locks</li>
+<li>eg x86/x64 xchg: <code>xchg src,addri</code><pre><code><code><div>xchg(value, addr) {
+    old = *addr
+    *addr = value
+    return old
+}
+</div></code></code></pre>
+</li>
+<li>eg ARM exclusive load (LDREX) and exclusive store (STREX)
+<ul>
+<li>LDREX and STREX must be used together</li>
+<li>LDREX loads a value from addr</li>
+<li>STREX attempt to store a value to addr</li>
+<li>STREX will fail to store value at addr if addr was touched between the LDREX and STREX calls (or even if they are located close together (&lt; 128bits))
+<ul>
+<li>try again</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>eg in MIPS, similar to ARM. but names are ll and sc.</li>
+</ul>
+<pre><code class="language-c"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> x86</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Acquire</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> *lock)</span> </span>{
+        <span class="hljs-keyword">while</span> (Xchg(<span class="hljs-literal">true</span>, lock));
+    }
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">elif</span> arm</span>
+    <span class="hljs-function">w <span class="hljs-title">ARMTestAndSet</span><span class="hljs-params">(w value, <span class="hljs-keyword">void</span> *addr)</span> </span>{
+        w tmp = LDREX addr;
+        w result = STREX value, addr;
+        <span class="hljs-keyword">if</span> (result == SUCCEED)  <span class="hljs-comment">// may fail, so return true to keep trying</span>
+            <span class="hljs-keyword">return</span> tmp;  <span class="hljs-comment">// successfully changed it, return it</span>
+        <span class="hljs-keyword">return</span> truthy;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Acquire</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> *lock)</span> </span>{
+        <span class="hljs-keyword">while</span> (ARMTestAndSet(<span class="hljs-literal">true</span>, lock));
+    }
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Release</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> *lock)</span> </span>{
+    *lock = <span class="hljs-literal">false</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">my_program</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">extern</span> <span class="hljs-keyword">bool</span> lk;
+    Acquire(&amp;lk);
+    <span class="hljs-comment">// critical session</span>
+    Release(&amp;lk);
+}
+</div></code></pre>
+<ul>
+<li>when using spinlocks, threads actively use the cpu while they wait for the lock =&gt; lock is owned by the cpu.
+<ul>
+<li>disabled interruption (preemption)</li>
+</ul>
+</li>
+</ul>
+<h3 id="os161">os/161</h3>
+<p>test and set in os/161</p>
+<pre><code class="language-c"><div><span class="hljs-comment">/* return value 0 indicates lock was acquired */</span>
+spinlock_data_testandset(<span class="hljs-keyword">volatile</span> <span class="hljs-keyword">spinlock_data_t</span> *sd)
+{
+    <span class="hljs-keyword">spinlock_data_t</span> x, y;
+    y = <span class="hljs-number">1</span>;
+    <span class="hljs-function">__asm <span class="hljs-title">volatile</span><span class="hljs-params">(
+        <span class="hljs-comment">/* assembly instructions x = %0, y = %1, sd = %2 */</span>
+        <span class="hljs-string">&quot;.set push;&quot;</span>       <span class="hljs-comment">/* save assembler mode */</span>
+        <span class="hljs-string">&quot;.set mips32;&quot;</span>     <span class="hljs-comment">/* allow MIPS32 instructions */</span>
+        <span class="hljs-string">&quot;.set volatile;&quot;</span>   <span class="hljs-comment">/* avoid unwanted optimization */</span>
+        <span class="hljs-string">&quot;ll %0, 0(%2);&quot;</span>    <span class="hljs-comment">/* x = *sd */</span>
+        <span class="hljs-string">&quot;sc %1, 0(%2);&quot;</span>    <span class="hljs-comment">/* *sd = y; y = success? */</span>
+        <span class="hljs-string">&quot;.set pop&quot;</span>         <span class="hljs-comment">/* restore assembler mode */</span>
+        : <span class="hljs-string">&quot;=r&quot;</span> (x), <span class="hljs-string">&quot;+r&quot;</span> (y) : <span class="hljs-string">&quot;r&quot;</span> (sd)  <span class="hljs-comment">/* outputs : inputs */</span>
+    )</span></span>;
+    <span class="hljs-keyword">if</span> (y == <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> x;
+}
+</div></code></pre>
+<p>assumption:</p>
+<ul>
+<li>only one write happens in memory at the same time. (true)</li>
+</ul>
+<h3 id="os161-locks">os/161 locks</h3>
+<ul>
+<li>spin locks spin, locks <em>lock</em>
+<ul>
+<li>a thread that calls <code>lock_acquire</code> blocks until the lock can be acquired</li>
+</ul>
+</li>
+<li>spin locks are owned by cpus, locks are owned by calling threads</li>
+</ul>
+<p>thread blocking</p>
+<ul>
+<li>when a thread blocks, it stops running
+<ul>
+<li>the scheduler chooses a new thread to run</li>
+<li>a context switch from the blocking thread to the new thread occurs</li>
+<li>the blocking thread is queued in a <em>wait queue (wait channels)</em> (not on ready list)
+<ul>
+<li>one queue per lock (or other rsc)?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>eventually a blocked thread is signaled and awakened by another thread</li>
+</ul>
+<p>in os/161, wait channels (queues) are used to implement thread blocking</p>
+<ul>
+<li><code>void wchan_sleep(struct wchan *wc);</code>
+<ul>
+<li>blocks calling thread on wait channel; causes ctx switch, like <code>thread_yield</code></li>
+</ul>
+</li>
+<li><code>void wchan_wakeall(struct wchan *wc);</code></li>
+<li><code>void wchan_wakeone(struct wchan *wc);</code></li>
+<li><code>void wchan_lock(struct wchan *wc);</code></li>
+</ul>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Lock</span> {</span>
+    <span class="hljs-keyword">char</span> *name; <span class="hljs-comment">// dbg</span>
+    <span class="hljs-keyword">bool</span> held;
+    Thread *owner;
+    wchan *wc;
+    Spinlock *spin;
+} Lock;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lock_acquire</span><span class="hljs-params">(Lock *lk)</span> </span>{
+    KASSERT(lk);
+    KASSERT(!(lk-&gt;held &amp;&amp; lk-&gt;owner == currthread));  <span class="hljs-comment">// i dont own it</span>
+    spin_acquire(lk-&gt;spin);
+    <span class="hljs-keyword">while</span> (lk-&gt;held) {
+        wchan_lock(lk-&gt;wc);
+        spin_release(lk-&gt;spin);
+        wchan_sleep(lk-&gt;wc);
+        <span class="hljs-comment">// after waking up</span>
+        spin_acquire(lk-&gt;spin);
+    }
+    lk-&gt;held = <span class="hljs-literal">true</span>;
+    lk-&gt;owner = currthread;
+    spin_release(lk-&gt;spin);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lock_release</span><span class="hljs-params">(lock *lk)</span> </span>{
+    KASSERT(lk);
+    KASSERT(lk-&gt;held &amp;&amp; lk-&gt;owner == currthread);
+    spin_acquire(lk-&gt;spin);
+    lk-&gt;held = <span class="hljs-literal">false</span>;
+    lk-&gt;owner = <span class="hljs-literal">NULL</span>;
+    wchan_wakeone(lk-&gt;wc);
+    spin_release(lk-&gt;spin);
+}
+</div></code></pre>
+<p>semaphore impl is almost identical..</p>
+<h3 id="semaphores">semaphores</h3>
+<ul>
+<li>a <em>semaphore</em> is a synchronization primitive that can be used to enforce mutual exclusion and</li>
+<li>it has an integer value which supports two operations
+<ul>
+<li>P: if the semaphore value is greater than 0, decrement the value; otherwise wait until the value is greater than 0 (then decrement it)</li>
+<li>V: increment the value</li>
+</ul>
+</li>
+</ul>
+<p>types of semaphores:</p>
+<ul>
+<li><em>binary semaphore</em>: with a single resource; behaves like a lock; but does not keep track of ownership</li>
+<li><em>counting semaphore</em>:</li>
+<li><em>barrier semaphore</em>: used to force one thread to wait for others to complete; initial count is typically 0
+<ul>
+<li>join: to join other 5 threads, create semaphore(-4), other threads increment it when finishing</li>
+<li>to join another threads, create semaphore(0)</li>
+</ul>
+</li>
+</ul>
+<p>differences between lock and semaphore:</p>
+<ul>
+<li>V does not have to follow P</li>
+<li>semaphores do not have owners</li>
+</ul>
+<h1 id="week-4-june-1">Week 4. June 1</h1>
+<pre><code class="language-c"><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">P</span><span class="hljs-params">(Semaphore *sem)</span> </span>{
+    KASSERT(sem);
+    spin_acquire(sem-&gt;spin);
+    <span class="hljs-keyword">while</span> (sem-&gt;sem_count == <span class="hljs-number">0</span>) {
+        wchan_lock(sem-&gt;wc);      <span class="hljs-comment">// prevent sleeping on available resource</span>
+        spin_release(sem-&gt;spin);  <span class="hljs-comment">//</span>
+        wchan_sleep(sem-&gt;wc);
+        <span class="hljs-comment">// after waking up</span>
+        spin_acquire(sem-&gt;spin);
+    }
+    --sem-&gt;sem_count;
+    spin_release(sem-&gt;spin);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">V</span><span class="hljs-params">(Semaphore *sem)</span> </span>{
+    KASSERT(sem);
+    spin_acquire(sem-&gt;spin);
+    ++sem-&gt;count;
+    wchan_wakeone(sem-&gt;wc);
+    spin_release(sem-&gt;spin);
+}
+</div></code></pre>
+<p><strong>eg.</strong> producer/consumer synchronization with bounded buffer</p>
+<ul>
+<li>suppose we have threads that add items to buffer and threads that remove items</li>
+<li>want to ensure consumers do not consume if buffer is empty - they wait</li>
+<li>buffer has finite capacity N and want to ensure producers must wait if buffer is full</li>
+</ul>
+<pre><code class="language-c"><div>Semaphore *items = sem_create(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-number">0</span>);
+Semaphore *spaces = sem_create(<span class="hljs-string">&quot;&quot;</span>, N);
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Producer</span><span class="hljs-params">()</span> </span>{
+    P(spaces);
+    <span class="hljs-comment">// add item to buffer (has to be atomic)</span>
+    V(items);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Consumer</span><span class="hljs-params">()</span> </span>{
+    P(items);
+    <span class="hljs-comment">// remove item from buffer (has to be atomic)</span>
+    V(spaces);
+}
+</div></code></pre>
+<h3 id="condition-variables">condition variables</h3>
+<ul>
+<li>each cv is intended to work together with a lock
+<ul>
+<li>cvs are only used from within the critical section that is protected by lock</li>
+</ul>
+</li>
+<li>operations:
+<ul>
+<li>wait: causes calling thread to block and releases the lock. once the thread is unblocked it reacquires the lock</li>
+<li>signal: if threads are blocked on the signaled condition variable, then one of those thread is unblocked</li>
+<li>broadcast: signal all</li>
+</ul>
+</li>
+<li>a thread is in critical section when it calls <code>wait</code>, and it will be in the critical section section when <code>wait</code> returns. however, in between the call and the return, while the caller is blocked, the caller is out of the critical section, and other threads may enter.</li>
+</ul>
+<pre><code class="language-c"><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">cv_wait</span><span class="hljs-params">(cv *cv, Lock *lk)</span> </span>{
+    KASSERT(cv &amp;&amp; lk);
+    KASSERT(lk-&gt;held &amp;&amp; lk-&gt;owner == currthread);
+    wchan_lock(cv-&gt;wc);
+    lock_release(lk);
+    wchan_sleep(cv-&gt;wc);
+    lock_acquire(lk);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">cv_signal</span><span class="hljs-params">(cv *cv, Lock *lk)</span> </span>{}
+</div></code></pre>
+<p><strong>eg.</strong> bounded buffer producer &amp; consumer</p>
+<pre><code class="language-c"><div><span class="hljs-keyword">int</span> <span class="hljs-keyword">volatile</span> count = <span class="hljs-number">0</span>;
+Lock *mutex;
+cv *notfull, *notempty;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Produce</span><span class="hljs-params">(item)</span> </span>{
+    lock_acquire(mutex);
+    <span class="hljs-keyword">while</span> (count == N) {
+        cv.wait(notfull, mutex);
+    }
+    <span class="hljs-comment">// add item to buffer</span>
+    ++count;
+    cv_signal(notempty, mutex);
+    lock_release(mutex);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Consume</span><span class="hljs-params">()</span> </span>{
+    lock_acquire(mutex);
+    <span class="hljs-keyword">while</span> (count == <span class="hljs-number">0</span>) {
+        cv.wait(notempty, mutex);
+    }
+    <span class="hljs-comment">// remove item from buffer</span>
+    --count;
+    cv_signal(notfull, mutex);
+    lock_release(mutex);
+    cb(item);
+}
+</div></code></pre>
+<h3 id="volatile-os161">volatile (os/161)</h3>
+<ul>
+<li>race conditions can occur for reasons other than programmers control:
+<ul>
+<li>compiler; cpu</li>
+<li><em>memory models</em> describe how thread access to memory in shared regions behave
+<ul>
+<li>tells compiler &amp; cpu which optimizations can be performed</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>volatile</code> disables optimization that may
+<ul>
+<li>optimize variables from memory to registers</li>
+<li>rearrange instructions</li>
+</ul>
+</li>
+<li>modern cpus has memory model as it reorders loads and stores to improve performance
+<ul>
+<li>modern architecture provides barrier and fence instructions</li>
+</ul>
+</li>
+</ul>
+<h3 id="deadlocks">deadlocks</h3>
+<p><strong>eg.</strong></p>
+<pre><code class="language-c"><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">()</span> </span>{
+    acquire(A);
+    acquire(B);
+    <span class="hljs-comment">// body</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">()</span> </span>{
+    acquire(B);
+    acquire(A);
+    <span class="hljs-comment">// body</span>
+}
+</div></code></pre>
+<p>techniques:</p>
+<ul>
+<li>no hold and wait: prevent a thread from requesting resources if it currently has resources allocated to it
+<ul>
+<li>if want to get n resources, either get all n or get none</li>
+</ul>
+</li>
+<li>resource ordering: order the resource types, and require that each thread acquire resources in increasing resource type order. ie a thread may make no requests for resources of type &lt;= to i if it is holding resources of type i.</li>
+</ul>
+<p><strong>eg.</strong> no hold and wait</p>
+<pre><code class="language-c"><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">try_acquire</span><span class="hljs-params">(Lock *lk)</span> </span>{
+    spin_acquire(lk-&gt;spin);
+    <span class="hljs-keyword">if</span> (lk-&gt;held) {
+        spin_release(lk-&gt;spin);
+        <span class="hljs-keyword">return</span> error;
+    }
+    lk-&gt;held = <span class="hljs-literal">true</span>;
+    lk-&gt;owner = currthread;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">()</span> </span>{
+    acquire(A);
+    <span class="hljs-keyword">while</span> (try_acquire(B) != <span class="hljs-number">0</span>) {
+        release(A);
+        acquire(A);
+    }
+    <span class="hljs-comment">// body</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">()</span> </span>{
+    acquire(B);
+    <span class="hljs-keyword">while</span> (try_acquire(A) != <span class="hljs-number">0</span>) {
+        release(B);
+        acquire(B);
+    }
+    <span class="hljs-comment">// body</span>
+}
+</div></code></pre>
+<p><strong>eg.</strong> resource ordering</p>
+<pre><code class="language-c"><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">a</span><span class="hljs-params">()</span> </span>{
+    acquire(A);
+    acquire(B);
+    <span class="hljs-comment">// body</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">b</span><span class="hljs-params">()</span> </span>{
+    acquire(A);
+    acquire(B);
+    <span class="hljs-comment">// body</span>
+}
+</div></code></pre>
+<p><strong>eg.</strong> have n queues, need to support an operation <code>transfer(i,j)</code> that moves an element from queue i to queue j unless i has to elements. how to use locks?</p>
+<ol>
+<li>use one lock per queue and no holding wait: no deadlock. can can n/2 transfers (# unique pairs) at the same time</li>
+<li>use one lock per queue and resource ordering:<pre><code class="language-c"><div>transfer(q1, q2) {
+    <span class="hljs-keyword">if</span> (q1-&gt;num &lt; q2-&gt;num) {
+        acquire(q1);
+        acquire(q2);
+    } <span class="hljs-keyword">else</span> {
+        acquire(q2);
+        acquire(q1);
+    }
+}
+</div></code></pre>
+</li>
+</ol>
+<h1 id="week-5-june-8">Week 5. June 8</h1>
+<h2 id="processes">processes</h2>
+<ul>
+<li>a <em>process</em> is an environment where an application program runs.
+<ul>
+<li>includes virtualized resources: threads, virtual memory, fd</li>
+<li>each process isolates it from other programs in other processes</li>
+</ul>
+</li>
+</ul>
+<p>os/161 process management calls:</p>
+<ul>
+<li>creation: <code>fork</code>, <code>execv</code>
+<ul>
+<li>after <code>fork</code>, both parent and child are executing copies of the same program
+<ul>
+<li>virtual mems of parent and child are identical at the same of fork, but may diverge afterwards</li>
+<li>fork is called by parent, but returns in both parent and child</li>
+</ul>
+</li>
+<li><code>execv</code> changes the program that the process is running
+<ul>
+<li>calling process's current vmem is destroyed</li>
+<li>process gets new vmem initialized with the code and data of the new program</li>
+<li>pid stays the same</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>destruction: <code>exit</code>
+<ul>
+<li>kernel records exit status code in case another process asks for it</li>
+</ul>
+</li>
+<li>synchronization: <code>waitpid</code>
+<ul>
+<li>only on child</li>
+</ul>
+</li>
+<li>attribute mgmt: <code>getpid</code></li>
+</ul>
+<p><strong>eg.</strong> how many processes in total? 8</p>
+<pre><code class="language-c"><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    fork();
+    fork();
+    fork();
+}
+</div></code></pre>
+<h3 id="system-calls">system calls</h3>
+<p><em>system calls</em> are the interface between processes and the kernel.</p>
+<pre><code><code><div>  +-------------------+
+  |   application     |
+  +-------------------+
+  |system call library|
+  +-------------------+    unprivileged code
+============================================
+  +-------------------+    privileged code
+  |      kernel       |
+  +-------------------+
+</div></code></code></pre>
+<ul>
+<li>the cpu implements different levels (rings) of <em>execution privilege</em> as security and isolation mechanism</li>
+<li>kernel code runs at highest privilege level</li>
+<li>application code runs at lower privilege since their user program should not be permitted to perform some tasks</li>
+<li>restriction allow the kernel to keep processes isolated frm one another - and from kernel</li>
+</ul>
+<h3 id="exceptions">exceptions</h3>
+<p>there are only two things that make kernel code run:</p>
+<ul>
+<li>interrupt</li>
+<li><em>exceptions</em>
+<ul>
+<li>caused by instruction execution when needing attention</li>
+<li>detected by the cpu during instruction execution</li>
+<li>cpu handles exceptions like it handles interrupts
+<ul>
+<li>control is transferred to fixed location where an exception handler is located</li>
+<li>the processor is switched to privileged execution mode</li>
+</ul>
+</li>
+<li>exception handler is part of the kernel</li>
+</ul>
+</li>
+</ul>
+<p>in mips, the same mechanism handles exceptions and interrupts.</p>
+<pre><code class="language-c"><div>EX_IRQ  <span class="hljs-number">0</span>  <span class="hljs-comment">/* Interrupt */</span>
+EX_MOD  <span class="hljs-number">1</span>  <span class="hljs-comment">/* TLB Modify (write to read-only page) */</span>
+EX_TLBL <span class="hljs-number">2</span>  <span class="hljs-comment">/* TLB miss on load */</span>
+EX_TLBS <span class="hljs-number">3</span>  <span class="hljs-comment">/* TLB miss on store */</span>
+EX_ADEL <span class="hljs-number">4</span>  <span class="hljs-comment">/* Address error on load */</span>
+EX_ADES <span class="hljs-number">5</span>  <span class="hljs-comment">/* Address error on store */</span>
+EX_IBE  <span class="hljs-number">6</span>  <span class="hljs-comment">/* Bus error on instruction fetch */</span>
+EX_DBE  <span class="hljs-number">7</span>  <span class="hljs-comment">/* Bus error on data load *or* store */</span>
+EX_SYS  <span class="hljs-number">8</span>  <span class="hljs-comment">/* Syscall */</span>
+EX_BP   <span class="hljs-number">9</span>  <span class="hljs-comment">/* Breakpoint */</span>
+EX_RI   <span class="hljs-number">10</span> <span class="hljs-comment">/* Reserved (illegal) instruction */</span>
+EX_CPU  <span class="hljs-number">11</span> <span class="hljs-comment">/* Coprocessor unusable */</span>
+EX_OVF  <span class="hljs-number">12</span> <span class="hljs-comment">/* Arithmetic overflow */</span>
+</div></code></pre>
+<p>how does the kernel know which syscall the app is requesting?</p>
+<ul>
+<li>kernel defines a code for each syscall</li>
+<li>kernel expects the app to place a code in a specified location before executing the <code>syscall</code> instruction
+<ul>
+<li>os/161 on mips: code goes in register v0, arguments to a0-a3</li>
+<li>success/fail code is in a3 on return; return value or error code is in v0 in return</li>
+</ul>
+</li>
+<li>kernel's exception handler checks this code</li>
+<li>the codes and code location are part of the <em>kernel ABI</em></li>
+<li><code>kern/include/kern/syscall.h</code></li>
+</ul>
+<p>how do syscalls work</p>
+<ol>
+<li>app calls library wrapper function for syscall</li>
+<li>library function performs <code>syscall</code> instruction</li>
+<li>kernel flips to privileged mode and exception handler runs
+<ol>
+<li>create trap frame</li>
+<li>determines this is a syscall exception</li>
+<li>determine which syscall</li>
+<li>does the work for requested syscall</li>
+<li>restores the application program state from the trap frame</li>
+<li>returns from exception</li>
+</ol>
+</li>
+<li>library wrapper finishes and returns</li>
+</ol>
+<h3 id="user-and-kernel-stacks">user and kernel stacks</h3>
+<p>every os/161 process thread has two stacks though it uses one at a time</p>
+<ul>
+<li><em>user (application) stack</em>
+<ul>
+<li>located in the app's vmem</li>
+<li>holds activation records for application functions</li>
+<li>kernel creates this stack when it sets up the virtual address memory for the process</li>
+</ul>
+</li>
+<li><em>kernel stack</em>: when kernel switches to privileged mode after exception
+<ul>
+<li>holds activation records for kernel functions</li>
+<li>also holds trap frames and switch frames</li>
+</ul>
+</li>
+<li><code>kern/arch/mips/locore/exception-mips1.S:common_exception</code> -&gt; <code>trap.c:mips_trap</code> -&gt; <code>kern/arch/mips/syscall/syscall.c:syscall</code></li>
+</ul>
+<h3 id="inter-process-communication">inter-process communication</h3>
+<ul>
+<li>file, socker, pipe, shared memory</li>
+<li>message passing/queue: a queue/data strean provided by the os to send data between processes</li>
+</ul>
+<h1 id="week-6-june-15">Week 6. June 15</h1>
+<h2 id="a2">A2</h2>
+<ul>
+<li>lock: increase # cpus to increase chance of race conditions</li>
+<li>cv: don't put spin locks in cv
+<ul>
+<li><code>sys161 kernel-ASST0 'sy2; q'</code></li>
+</ul>
+</li>
+<li>cannot run tests (sy2) back to back until A3</li>
+</ul>
+<h2 id="virtual-memory">virtual memory</h2>
+<ul>
+<li>physical memory:
+<ul>
+<li>if physical addresses are P bits, then max addressable physical memory is 2^P bytes</li>
+<li>sys/161 uses 32 bit physical addresses</li>
+<li>modern cpus use 48 bits (256 TB)</li>
+</ul>
+</li>
+<li>kernel provides a separatee, private <em>virtual memory</em> for each process holding code, data, stack</li>
+<li>if virtual addresses are V bits, the max size of a virtual memory is 2^V bytes
+<ul>
+<li>mips: V=32</li>
+</ul>
+</li>
+<li>running applications see only virtual addresses</li>
+<li>why use virtual memory:
+<ul>
+<li>each process is isolated in its vmem and cannot access other processes</li>
+<li>potential to support virtual vmem larger than physical mem</li>
+<li>total size of all vmems can be larger than physical memory</li>
+</ul>
+</li>
+</ul>
+<p>os/161:</p>
+<pre><code><code><div>                         grow
+|code|data                 &lt;- |stack|
+</div></code></code></pre>
+<h3 id="address-translation">address translation</h3>
+<ul>
+<li>each virtual mem is mapped to different parts of physical memory</li>
+<li>address translation is performed in hardware, on the <em>memory management unit (MMU)</em> using info provided by the kernel</li>
+</ul>
+<p>dynamic relocation</p>
+<pre><code><code><div>   process A vmem                        process B vmem
++------+- - - - - - +                 +----------+- - - - +
+| 28KB |            |                 |   48KB   |        |
++------+- - - - - - +                 +----------+- - - - +
+0x0    0x6fff                         0x0        0x8fff
+
+          physical mem
+
+       B offset   B limit
+       v          v
++------+----------+--------+------+-------------+
+|      |  proc B  |        |proc A|             |
++------+----------+--------+------+-------------+
+0x0                        ^      ^
+                           A off. A limit
+</div></code></code></pre>
+<ul>
+<li>offset (relocation, R) is the position in the physical mem where process memory begins.</li>
+<li>limit L is the amount of memory used by the process.</li>
+<li>given virtual address v,
+<ul>
+<li>if v &lt; L then physical address = v + R,</li>
+<li>else exception</li>
+</ul>
+</li>
+</ul>
+<p>problem:</p>
+<ul>
+<li>dynamic relocation suffer from <em>internal fragmentation</em>.</li>
+<li>stack grows from opposite direction, do we need a big contiguous chunk of memory where nothing is in the middle?<pre><code><code><div>+----+-----------------------------------------+-----------+
+|code|  data  data                     &lt;- stack|           |
++----+-----------------------------------------+-----------+
+0x0                                            0x7fffffff (hi end)
+</div></code></code></pre>
+</li>
+</ul>
+<h3 id="segmentation">segmentation</h3>
+<ul>
+<li>instead of mapping entire vmem to physical, can map each <em>segment</em></li>
+<li>kernel maintains offset and limit for each segment</li>
+<li>a virtual address have two parts: (segment ID, offset within segment)</li>
+<li>with K bits for segment id, we can have up to
+<ul>
+<li>2^K segments</li>
+<li>2^(V-K) bytes per segment</li>
+</ul>
+</li>
+</ul>
+<p>translation:</p>
+<ul>
+<li>approach 1: mmu has <em>relocation register</em> and <em>limit register</em> for each segment
+<ul>
+<li>steps:
+<ol>
+<li>split v into segment number (s) and address within segment (a)</li>
+<li>if a &lt; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">L_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> return a + <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">R_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>else exception</li>
+</ol>
+</li>
+<li>for dynamic relocation, kernel maintains a separate set of relocation offsets and limits for each process, and changes values in mmu's registers when switching processes</li>
+</ul>
+</li>
+<li>approach 2: maintains segment table
+<ul>
+<li>instead of using registers to store R and L, use memory to store them for lookup</li>
+<li>a bit slower</li>
+</ul>
+</li>
+</ul>
+<p><strong>eg.</strong></p>
+<pre><code><code><div>proc A
+---------------------------------------------------------
+segment        limit register         relocation register
+0              0x2000                 0x38000
+1              0x5000                 0x10000
+---------------------------------------------------------
+
+translation for A:
+---------------------------------------------------------
+addr          segment        offset       physical addr         remark
+0x1240        0              0x1240       0x39240               addr = 0|001 0010 0100 0000
+0xA0A0        1              0x20AD       0x120AD               addr = 1|010 0000 1010 0000
+---------------------------------------------------------
+</div></code></code></pre>
+<h1 id="week-7-june-22">Week 7. June 22</h1>
+<h3 id="paging">paging</h3>
+<ul>
+<li>physical memory is divided into fixed-size chunks called <em>physical pages</em> or <em>frames</em>.
+<ul>
+<li>normally 4KB</li>
+</ul>
+</li>
+<li>virtual mem's pages map to different frames using a <em>page table</em></li>
+<li>each <em>page table entry (PTE)</em> indexed by <em>page numbers</em></li>
+<li>a valid bit is used to indicate if the PTE is used (since not all pages of virtual mem are used).</li>
+</ul>
+<pre><code><code><div>process A vmem
++-+-+---+
+|o|o|   |
++-+-+---+
+
+
+proc A page table
+-----------------
+page frame valid?
+0x0  0x0f  1
+0x1  0x26  1
+0x3  0x00  0
+0x4  0x00  0
+-----------------
+</div></code></code></pre>
+<ul>
+<li>mmu includes a <em>page table base register</em> pointing to the table table of current process</li>
+<li>translation:
+<ol>
+<li>determine the page number and offset of the virtual address
+<ul>
+<li>page number: virtual address / page size</li>
+<li>offset = virtual address % page size</li>
+</ul>
+</li>
+<li>look up page table. if valid=0, throw exception</li>
+<li>physical address = (frame number * frame size) + offset</li>
+</ol>
+</li>
+</ul>
+<p>formulas (note there is only one page table!):</p>
+<ul>
+<li># PTEs = max virtual memory size / page size (not addr space)</li>
+<li># bits for offset = log(page size)</li>
+<li># bits for page number = log(# PTEs)</li>
+</ul>
+<p><img src="assets/w7_1.JPG" alt="img"></p>
+<p>other info found in PTEs:</p>
+<ul>
+<li><em>write protection bit</em>: mmu raise exception when it translates virtual address for read-only mem</li>
+<li><em>bits to track page usage</em>:
+<ul>
+<li>reference bit: has the process used this page recently?</li>
+<li>dirty bit: have contents of this page been changed?</li>
+<li>set by mmu, read by kernel</li>
+</ul>
+</li>
+</ul>
+<p><strong>eg.</strong> if V=32bits, then the maximum virtual mem size is 4GB. assuming page size is 4KB, and PTE size is 4 bytes, then page table is 4GB/4KB*4~4MB. if V=48bits, then page table size is 256GB!</p>
+<p><strong>eg.</strong> consider 32-bit virtual and physical addresses and a page size of 2^12 bytes (4KB). suppose process P is running using only 128KB of vmem. the first 5 entries in its page table is as follows:</p>
+<pre><code><code><div>page    frame      v
+--------------------
+0x0     0x00234    1
+0x1     0x00235    1
+0x2     0x0023f    1
+0x3     0x00ace    1
+0x4     0x00004    1
+</div></code></code></pre>
+<ol>
+<li>what is total number of entries in P's page table? 2^32 / 2^12 = 2^20 PTEs =&gt; 20 bits for page num</li>
+<li>how many valid entries? 128KB / 4KB = 32 entries</li>
+<li>translate following virtual addresses:
+<ul>
+<li>0x00001a60 =&gt; 0x00235 a60 (note first 20 bits for page num)</li>
+<li>0x00000fb5 =&gt; 0x00234 fb5</li>
+<li>0x00004664 =&gt; 0x00004 664</li>
+</ul>
+</li>
+<li>if page size were 16KB. how many entries in P page table? 2^32 / 2^14 = 2^18 =&gt; 18 bits for page num
+<ul>
+<li>how many bits for offset? log(2^14) = 14</li>
+</ul>
+</li>
+</ol>
+<p>why do we keep all pages in page table instead of only valid ones? because entries are not contiguous.</p>
+<h3 id="multi-level-paging">multi-level paging</h3>
+<ul>
+<li>instead of having a single page table to map an entire virtual memory, we organize it and split the page table into multiple <em>levels</em>
+<ul>
+<li>multiple smaller tables, each fitting onto a <strong>single page</strong>. parent tables store pointers to child tables</li>
+<li>if a table contains no valid PTEs, do not create that table</li>
+</ul>
+</li>
+<li>virtual address now contains multiple page numbers for each page level
+<ul>
+<li>use them to traverse the tree of page tables. raise exception if invalid bit is encountered</li>
+</ul>
+</li>
+</ul>
+<p>in practice, multi-level paging is smaller than single page.</p>
+<p>formulas:</p>
+<ul>
+<li># PTEs for a page = page size / PTE size</li>
+<li># of bits for page number = log(# PTEs for a page)</li>
+<li># bits for offset = log(page size)</li>
+<li># levels = ceil((V - # bits for offset) / # bits for page number)</li>
+</ul>
+<p><strong>eg.</strong> V=32, PTE size = 2^2, page size = 2^12. levels = ceil((32 - log(2^12)) / log(2^12 / 2^2)) = ceil((32 - 12) / 10) = 2. if V=48, then 4 levels.</p>
+<p><strong>eg.</strong> consider virtual addresses and physical addresses are 64 bits. page size is 1MB (2^20 bytes). the size of page table entry is 16 (2^4) bytes.</p>
+<ol>
+<li>how many bits for virtual address page offset? log(2^20) = 20</li>
+<li>what is maximum number of entries in an individual page table? 2^20 / 2^4 = 2^16</li>
+<li>how many levels?
+<ul>
+<li>bits for page number: log(2^16) = 16</li>
+<li>levels = ceil((64 - 20) / 16) = 3</li>
+</ul>
+</li>
+<li>a process uses 128MB (2^27) of vmem, with a virtual address range from 0 to 2^27-1. how many individual page tables at each level required to translate the process' address space? 1 1 1</li>
+</ol>
+<h3 id="tlb">TLB</h3>
+<ul>
+<li>address translation via page table adds a minimum of one extra memory operation -&gt; slow</li>
+<li>use <em>translation lookaside buffer</em> in mmu</li>
+<li><em>hardware-managed</em>: mmu handles tlb misses</li>
+<li>when mmu translate virtual address, find it in tlb, else <em>(tlb miss)</em> find it in memory and add it to tlb</li>
+<li>if mmu cannot distinguish TLB entries from different address spaces, then kernel must clear or invalidate the TLB on each context switch
+<ul>
+<li>os161: <code>as_activate()</code> clears TLB</li>
+</ul>
+</li>
+</ul>
+<p>software-managed TLBs:</p>
+<ul>
+<li>mips has <em>software-managed TLB</em></li>
+<li>when translate virtual address, find it in tlb, else raise exception and kernel must
+<ul>
+<li>determine frame number for p</li>
+<li>add it to TLB, evicting another entry if necessary</li>
+</ul>
+</li>
+<li>retries the instruction after tlb miss is handled</li>
+</ul>
+<p>mips R300 tlb:</p>
+<pre><code><code><div>&lt;--          hi 32 bits      --&gt;&lt;--      low 32 bits    --&gt;
++-------------------+-----+----+--------------+---+-------+
+|        20         |  6  |    |      20      |   |       |
++-------------------+-----+----+--------------+---+-------+
+       page #         PID           frame #   valid/perm...
+                  (not used)
+</div></code></code></pre>
+<p>why PID is not used: because we clear cache after every context switch anyways.<br>
+benefit of PID: cache affinity, security...</p>
+<p>conslusion:</p>
+<ul>
+<li>paging does not introduce external fragmentation</li>
+<li>multi-level paging reduces amt of memory required to store mappings</li>
+<li>TLB misses are increasingly expensive with deeper page tables -&gt; one miss for each page table</li>
+</ul>
+<h3 id="os161-dumbvm">os/161 (<code>dumbvm</code>)</h3>
+<ul>
+<li>uses segmentation (code, data, stack segments) - that contains contiguous 'pages'</li>
+<li>32 bit paged virtual and physical address</li>
+<li>software-managed TLB
+<ul>
+<li><code>vm_fault</code> for TLB exception handling</li>
+</ul>
+</li>
+</ul>
+<pre><code><code><div>                            npages2
+                          &lt;---------&gt;
+                       vbase2
+-------------------------v
++- - -+----------+- - - -+----------+- - - - - - - - - - - - - - - - +-----+
+|     |   code   |       |   data   |        virtual memory          |stack|
++- - -+----------+- - - -+----------+- - - - - - - - - - - - - - - - +-----+
+------^
+    vbase1
+      &lt;----------&gt;
+         npages1
+
+  stackbase
+-----v
++----+-----+------------+----------+---+--------+--------------------------+
+|    |stack|            |   data   |   |  code  |     physical memory      |
++----+-----+------------+----------+---+--------+--------------------------+
+------------------------^--------------^
+                     pbase2          pbase1
+</div></code></code></pre>
+<pre><code class="language-c"><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">addrspace</span> {</span>
+    <span class="hljs-keyword">vaddr_t</span> as_vbase1;     <span class="hljs-comment">/* base virtual address of code segment */</span>
+    <span class="hljs-keyword">paddr_t</span> as_pbase1;     <span class="hljs-comment">/* base physical address of code segment */</span>
+    <span class="hljs-keyword">size_t</span> as_npages1;     <span class="hljs-comment">/* size (in pages) of code segment */</span>
+    <span class="hljs-keyword">vaddr_t</span> as_vbase2;     <span class="hljs-comment">/* base virtual address of data segment */</span>
+    <span class="hljs-keyword">paddr_t</span> as_pbase2;     <span class="hljs-comment">/* base physical address of data segment */</span>
+    <span class="hljs-keyword">size_t</span> as_npages2;     <span class="hljs-comment">/* size (in pages) of data segment */</span>
+    <span class="hljs-keyword">paddr_t</span> as_stackpbase; <span class="hljs-comment">/* base physical address of stack */</span>
+};
+
+...
+
+<span class="hljs-comment">// USERSTACK = 0x8000 0000, DUMBVM STACKPAGES = 12, PAGE SIZE = 4KB.</span>
+<span class="hljs-keyword">auto</span> vbase1 = as-&gt;as_vbase1;
+<span class="hljs-keyword">auto</span> vtop1 = vbase1 + as-&gt;as_npages1 * PAGE_SIZE;
+<span class="hljs-keyword">auto</span> vbase2 = as-&gt;as_vbase2;
+<span class="hljs-keyword">auto</span> vtop2 = vbase2 + as-&gt;as_npages2 * PAGE_SIZE;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> stackbase = USERSTACK - DUMBVM_STACKPAGES * PAGE_SIZE;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> stacktop = USERSTACK;
+
+<span class="hljs-keyword">if</span> (faultaddress &gt;= vbase1 &amp;&amp; faultaddress &lt; vtop1)  <span class="hljs-comment">// code</span>
+    paddr = (faultaddress - vbase1) + as-&gt;as_pbase1;
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (faultaddress &gt;= vbase2 &amp;&amp; faultaddress &lt; vtop2)  <span class="hljs-comment">// data</span>
+    paddr = (faultaddress - vbase2) + as-&gt;as_pbase2;
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (faultaddress &gt;= stackbase &amp;&amp; faultaddress &lt; stacktop)  <span class="hljs-comment">// stack</span>
+    paddr = (faultaddress - stackbase) + as-&gt;as_stackpbase;
+<span class="hljs-keyword">else</span>
+    <span class="hljs-keyword">return</span> EFAULT;
+</div></code></pre>
+<p>os/161 uses ELF binary files:</p>
+<ul>
+<li>pre-loads address space before program runs (<code>execv</code>)</li>
+<li>header contains address space segment descriptions
+<ul>
+<li>virtual address of the start of the segment</li>
+<li>length of segment in virtual address space</li>
+<li>location of the segment in the ELF</li>
+<li>length of segment in the ELF</li>
+</ul>
+</li>
+<li>contains virtual address for entry point</li>
+<li><code>dumbvm</code> assumes ELF contains two segments: <em>text</em> and <em>data</em>, but no stack. stack is created by <code>dumbvm</code> for each process.</li>
+<li><code>kern/syscall/loadelf.c</code></li>
+</ul>
+<h1 id="week-8-june-29">Week 8. June 29</h1>
+<h3 id="virtual-memory-for-kernel">virtual memory for kernel</h3>
+<p>challenges if kernel lives in virtual memory:</p>
+<ul>
+<li>bootstrapping: kernel helps to implement virtual mem, how can kernel run in virtual mem when it is just starting?
+<ul>
+<li>architecture-specific</li>
+</ul>
+</li>
+<li>sharing: data need to be copied between kernel and application - how to do it if they are in different virtual address spaces
+<ul>
+<li>solved by making kernel virtual mem overlap with process' virtual mem</li>
+<li>lower 50% user addr - higher 50% kernel addr split</li>
+</ul>
+</li>
+</ul>
+<pre><code><code><div>        user               |        kernel
++-------------------+------+-----+-----+----------+
+|                   |stack |kseg0|kseg1|  kseg2   |
++-------------------+------+-----+-----+----------+
+0x0                        |0x8000 0000           0xffff ffff
+</div></code></code></pre>
+<p>os/161:</p>
+<ul>
+<li>only supports 1GB of physical memory - remaining 3GB unused</li>
+<li>kernel mem is divided into 3 segments
+<ul>
+<li>kseg0 - 512MB: kernel data stractures, stacks, etc</li>
+<li>kseg1 - 512MB: addressing devices</li>
+<li>kseg2 - 1GB: unused (mips)</li>
+</ul>
+</li>
+<li>physical memory is divided into frames. frame use is managed by kernel in <em>coremap</em></li>
+</ul>
+<p>address translation is os/161:</p>
+<ul>
+<li>dynamic relocation is used. TLB is not used when cpus is in privileged mode</li>
+<li>to translate kseg0: virtual addr - 0x8000 0000 = physical addr</li>
+<li>to translate kseg1: virtual addr - 0xa000 0000 = physical addr</li>
+<li>raise exception for kseg2</li>
+<li>both kseg0 and kseg1 map to <strong>first 512 MB</strong> is physical memory. ksegs will not use all of the allowed kseg memory - they overlap with user program</li>
+</ul>
+<h3 id="using-secondary-storage">using secondary storage</h3>
+<ul>
+<li>goal:
+<ul>
+<li>allow larger virtual address space than physical</li>
+<li>allow greater multiprogramming by using less primary memory for each process</li>
+</ul>
+</li>
+<li>solution:
+<ul>
+<li>allow pages from virtual mem to be stoed in secondary storage</li>
+<li>swap pages (segments) between secondary storage and primary memory</li>
+</ul>
+</li>
+<li>set of virtual pages present in physical memory is called <em>resident set</em> of a process</li>
+<li>each PTE needs a <em>present bit</em> to tell whether page is in memory</li>
+</ul>
+<p>reducing page faults:</p>
+<ul>
+<li>accessing secondary storage can be orders of magnitude slower</li>
+<li>limit number of processes so that there is enough physical memory per process</li>
+<li>hide latencies - predict and use prefetching</li>
+<li>try to be smart about which pages are kept in physical mem, and which evicted - use FIFO?</li>
+<li><em>MIN</em>: replace page that will not be referenced for longest time
+<ul>
+<li>can't use - requires knowledge of the future</li>
+</ul>
+</li>
+<li><em>LRU</em>:
+<ul>
+<li><em>temporal locality</em>: programs are more likely to access pages that they have accessed recently</li>
+<li><em>spatial locality</em>: programs are likely to access parts of memory that are close to parts they have accessed recently</li>
+<li>can't use - kernel don't keep records after translation unless exception</li>
+</ul>
+</li>
+</ul>
+<p>measuring usage:</p>
+<ul>
+<li>add a <em>use bit</em> to each PTE
+<ul>
+<li>set by the mmu each time a page is used ie translation happens</li>
+<li>can be read and cleared by kernel</li>
+</ul>
+</li>
+<li><em>clock algorithm</em>: a victim pointer cycles through page frames. pointer moves whenever a replacement is necessary<pre><code class="language-cs"><div><span class="hljs-keyword">while</span> use bit of victim <span class="hljs-keyword">is</span> <span class="hljs-keyword">set</span>:
+    clear use bit of victim
+    victim = (victim + <span class="hljs-number">1</span>) % num_frames
+choose <span class="hljs-keyword">this</span> vitcim <span class="hljs-keyword">for</span> replacement  <span class="hljs-comment">// do not set bit; mmu will set it</span>
+victim = (victim + <span class="hljs-number">1</span>) % num_frames
+</div></code></pre>
+</li>
+</ul>
+<h1 id="week-9-july-6">Week 9. July 6</h1>
+<h2 id="scheduling">scheduling</h2>
+<h3 id="simple-scheduling-model">simple scheduling model</h3>
+<p>simple scheduling model:</p>
+<ul>
+<li>given a set of <em>jobs</em> to schedule, only one of job run at a time</li>
+<li>for each job, we are given
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: job arrival time</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">r_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>: job run time</li>
+</ul>
+</li>
+<li>for each job, we define
+<ul>
+<li><em>response time</em>: between job's arrival and when job starts to run</li>
+<li><em>turnaround time</em>: between job's arrival and when jobs finishes</li>
+<li>we want ot minimize of of them</li>
+</ul>
+</li>
+</ul>
+<p><strong>first come, first served</strong>:</p>
+<ul>
+<li>jobs run in order of arrival (queue)</li>
+<li>simple, avoids starvation</li>
+</ul>
+<pre><code><code><div>   A     B       C       D
++-----+----+-----------+----+
+
+order of arrival: A(a=0,r=6) B(a=0,r=5) C(a=0,r=12) D(a=10,r=5)
+</div></code></code></pre>
+<p><strong>round robin</strong>:</p>
+<ul>
+<li>used in os/161</li>
+<li>jobs are queued by order of arrival, but have allowed running time. when preempted, it is placed at the back of the line</li>
+<li>no starvation</li>
+</ul>
+<pre><code><code><div>   A    B   C   A   D    C  C
++----+----+----+-+----+----+-+
+
+max time: 5
+order of arrival: A(a=0,r=6) B(a=0,r=5) C(a=0,r=12) D(a=10,r=5)
+</div></code></code></pre>
+<p><strong>shortest job first</strong>:</p>
+<ul>
+<li>run jobs in increasing order of runtime</li>
+<li>mimimizes average turnaround time</li>
+<li>starvation is possible
+<ul>
+<li>those longer jobs are never run</li>
+</ul>
+</li>
+</ul>
+<pre><code><code><div>   B     A    D       C
++----+-----+----+----------+
+
+order of arrival: A(a=0,r=6) B(a=0,r=5) C(a=0,r=12) D(a=10,r=5)
+</div></code></code></pre>
+<p><strong>shortest remaing time first</strong>:</p>
+<ul>
+<li>preemptive variant of SJF; arriving jobs preempt running job</li>
+<li>select one with shortest remaining time</li>
+<li>starvation is still possible</li>
+</ul>
+<pre><code><code><div>   B    A  A   D       C
++----+----+-+----+----------+
+
+order of arrival: A(a=0,r=6) B(a=0,r=5) C(a=0,r=12) D(a=10,r=5)
+</div></code></code></pre>
+<h3 id="cpu-scheduling">cpu scheduling</h3>
+<ul>
+<li>in cpu scheduling, jobs to be scheduled are the threads</li>
+<li>cpu scheduling typically differs from simple scheduling model:
+<ul>
+<li>run times of threads are normally not known</li>
+<li>threads are sometimes not runnable: when they are blocked</li>
+<li>threads may have different priorities</li>
+</ul>
+</li>
+<li>the objective of scheduler is normally to achieve balance between responsiveness, fairness, efficiency</li>
+</ul>
+<p><em>multi-level feedback queues</em>:</p>
+<ul>
+<li>most commonly used</li>
+<li>objective: good responsiveness for interactive threads, non-interactive threads make as much progress as possible
+<ul>
+<li>interactive threads are frequently blocked, waiting for user input etc</li>
+</ul>
+</li>
+<li>approach: give higher priority to interactive threads so they run whenever they are ready</li>
+<li>problem: how to determine which threads are interactive?</li>
+</ul>
+<p>algo:</p>
+<ol>
+<li>n round-robin ready queues where priority of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>i</mi></msub><mo>&gt;</mo><msub><mi>Q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">Q_i&gt;Q_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> if i&gt;j</li>
+<li>threads in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Q_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> use quantum <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">q_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>q</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">q_i\leq q_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8304100000000001em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> if i&gt;j</li>
+<li>scheduler selects a thread from highest priority queue to run
+<ol>
+<li>threads in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">Q_{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> are only selected when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">Q_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is empty</li>
+</ol>
+</li>
+<li>if a thread from <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">Q_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is preempted, it is pushed to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">Q_{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>when a thread wakes after blocking, it is put onto the highest-priority queue</li>
+<li>to prevent starvation, all threads are periodically placed in the highest-priority queue
+<ul>
+<li>some variants allow preempting low-priority threads when a thread wakes to ensure fast response</li>
+</ul>
+</li>
+<li>since interactive threads tend to block frequently, they will 'live' in higher-priority queues while non-interactive threads sit down to the bottom</li>
+</ol>
+<pre><code><code><div>  +---------+  wake
+  |         v
+  |     +---------+
+  +&lt;--- |  Qn,qn  |  highest priority, lowest quantum
+  |     +---------+
+  |         | preemption
+  |         v
+  |     +---------+
+  +&lt;--- |Qn-1,qn-1|
+  |     +---------+
+  |         | preemption
+  |         v
+  |     +---------+
+  +&lt;--- |  Q1,q1  |  lowest priority, highest quantum
+        +---------+
+</div></code></code></pre>
+<p><em>linux completely fair scheduler</em>:</p>
+<ul>
+<li>each thread assigned a <em>weight</em></li>
+<li>goal: ensure each thread gets a share of the processor in proportion to its weight</li>
+<li>basic ops:
+<ul>
+<li>track <em>'virtual' runtime</em> of each runnable thread</li>
+<li>always run thread with lowest virtual runtime</li>
+</ul>
+</li>
+<li>virtual runtime is actual runtime adjusted by the thread weights
+<ul>
+<li>formula: actual runtime times <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msub><mo>∑</mo><mrow><mtext>all </mtext><mi>j</mi></mrow></msub><msub><mi>w</mi><mi>j</mi></msub></mrow><msub><mi>w</mi><mi>i</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sum_{\text{all }j} w_j}{w_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.6023269999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.157227em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.02691em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.632227em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1745899999999999em;"><span style="top:-2.1785614285714283em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">all </span></span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.46032428571428574em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.19516666666666668em;"></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.02691em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2818857142857143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">w_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is weight for ith thread</li>
+<li>virtual runtime advances slowly for threads with higher weights, quickly for threads with low weights</li>
+</ul>
+</li>
+<li>same quantum for all threads and priority</li>
+<li>how to deal with new thread with 0 actual runtime? assign some value to it initially between lowest actual runtime and highest.</li>
+</ul>
+<h3 id="scheduling-on-multi-core-processors">scheduling on multi-core processors</h3>
+<p>shared ready queue: contention</p>
+<p>per core ready queue: scalable, cache affinity. downside: load-balancing</p>
+<h2 id="device-and-io">device and IO</h2>
+<ul>
+<li>a <em>device</em> is how a computer receives input and produces output
+<ul>
+<li>sys/161 example:
+<ul>
+<li>timer/clock (most important): current time, timer, beep</li>
+<li>disk drive</li>
+<li>serial console: character input/output</li>
+<li>text screen: character-oriented graphics</li>
+<li>network interface</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>a <em>bus</em> is a communication pathway between devices
+<ul>
+<li><em>internal bus (main bus)</em>: memory bus or front side bus is for communication between cpu and ram. it is fast and close to cpus</li>
+<li><em>peripheral bus (expansion bus)</em>: allows devices in the computer to communicate</li>
+</ul>
+</li>
+<li>a <em>bridge</em> connects two different buses</li>
+<li>communication with devices carried out through <em>device registers</em>
+<ul>
+<li><em>status register</em>: tells about the device's current state. typically read</li>
+<li><em>command register</em>: issue command to device by writing to it</li>
+<li><em>data register</em>: used to transfer larger blocks of data to/from the device</li>
+<li>some device registers are combination of primary types</li>
+</ul>
+</li>
+</ul>
+<p>sys/161 clock:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">offset</th>
+<th style="text-align:center">size</th>
+<th style="text-align:center">type</th>
+<th style="text-align:center">desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status</td>
+<td style="text-align:center">current time (s)</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status</td>
+<td style="text-align:center">current time (ms)</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">command</td>
+<td style="text-align:center">restart-on-expiry</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status and command</td>
+<td style="text-align:center">interrupt (reading clears)</td>
+</tr>
+<tr>
+<td style="text-align:center">16</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status and command</td>
+<td style="text-align:center">countdown time (ms)</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">command</td>
+<td style="text-align:center">speaker (beeping)</td>
+</tr>
+</tbody>
+</table>
+<p>clock is used to implement preemption.</p>
+<p>os/161 serial console:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">offset</th>
+<th style="text-align:center">size</th>
+<th style="text-align:center">type</th>
+<th style="text-align:center">desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">command and data</td>
+<td style="text-align:center">character buffer</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status</td>
+<td style="text-align:center">writeIRQ (complete status)</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status</td>
+<td style="text-align:center">readIRQ</td>
+</tr>
+</tbody>
+</table>
+<p>if a write is in progress, the device exhibits undefined behaviour if another write happens. (mutex needed for writing)</p>
+<h3 id="device-drivers">device drivers</h3>
+<ul>
+<li>a <em>device driver</em> is part of kernel that interacts with a device</li>
+<li>though majority of device drivers are (dynamically loadable) part of the kernel, some exist in user-space (eg printer)</li>
+</ul>
+<p><strong>eg.</strong> write character to tty</p>
+<pre><code class="language-cs"><div>P(output device write semaphore)
+write character to device data register
+<span class="hljs-keyword">do</span>:
+    read writeIRQ register  <span class="hljs-comment">// polling</span>
+<span class="hljs-keyword">while</span> status <span class="hljs-keyword">is</span> not <span class="hljs-string">&#x27;completed&#x27;</span>
+V(output device write semaphore)
+</div></code></pre>
+<p>why use semaphore? we may be in different threads (?)</p>
+<pre><code class="language-cs"><div><span class="hljs-comment">// use interrupts to avoid polling</span>
+<span class="hljs-comment">// device driver write handler</span>
+P(output device write semaphore)
+write character to device data register
+
+<span class="hljs-comment">// interrupt handler for serial device</span>
+<span class="hljs-function">write write IRQ register to ack completion
+<span class="hljs-title">P</span>(<span class="hljs-params">output device write semaphore</span>)
+</span></div></code></pre>
+<p>accessing devices:</p>
+<ul>
+<li>how to access device registers?
+<ul>
+<li>option 1: <em>port-mapped IO</em> with special IO instructions
+<ul>
+<li>device registers are assigned 'port' numbers with correspond to regions of memory in a smaller address space</li>
+<li>special IO instructions eg <code>in</code> and <code>out</code> on x86 are used to transfer data between specified port and cpu register</li>
+<li>pro: fast - less read/write</li>
+<li>cons: very restricted (eg arithmetics done outside port), very small number of devices</li>
+</ul>
+</li>
+<li>option 2 <em>memory-mapped IO</em>
+<ul>
+<li>each device register has physical memory address</li>
+<li>device drivers read/write device registers using normal load and store instructions</li>
+<li>cons: slow - all devices connected to main bus, lots of decoding</li>
+</ul>
+</li>
+<li>modern: use both</li>
+</ul>
+</li>
+</ul>
+<p>mips/os161: each device is assigned to one of 32 64KB device slots. a device's registers and data buffers are mem-mapped into its assigned slot.</p>
+<p>larger data transfer:</p>
+<ul>
+<li><em>program-controlled IO</em>: device driver moves data between memory and buffer on the device
+<ul>
+<li>cpu is busy while data is being transferred</li>
+<li>sys/161</li>
+</ul>
+</li>
+<li><em>direct memory access</em>: device itself is responsible for moving data to/from memory.
+<ul>
+<li>cpu is not busy</li>
+<li>modern</li>
+</ul>
+</li>
+</ul>
+<h1 id="week-10-july-13">Week 10. July 13</h1>
+<h3 id="persistent-non-volatile-storage">persistent (non-volatile) storage</h3>
+<p><em>persistent</em> storage is any device where data persists even when device is without power.</p>
+<ul>
+<li>punched cards of metal or paper (1700s-1970s)</li>
+<li>magnetic tapes (1920s): small, cheap, actively used today. cons: has life span</li>
+<li>floppy (1970s-2000s) and hard disks (1950s)</li>
+<li>CD (1980s), DVD (1990s), Blu-ray (2000s)</li>
+<li>SSD (1970s, 1990s)</li>
+<li>resistive RAM (2000s)</li>
+</ul>
+<h3 id="hard-disks">hard disks</h3>
+<pre><code><code><div>              spindle
+                 |
+r/w       ===============   platter (glass or porcelain, ferromagnetic-coated)
+head ---------+  |
+          ===============   platter
+          ===============   platter
+                 |
+
+tracks (concentric circles)
+</div></code></code></pre>
+<ul>
+<li>disk is an array of numbered blocks (sectors) of same size (eg 512B)</li>
+<li>blocks are unit of transfer between disk and memory
+<ul>
+<li>typically, one or more contiguous blocks can be transferred in single operation</li>
+</ul>
+</li>
+</ul>
+<p>cost model for disk io:</p>
+<ul>
+<li><em>seek time</em>: move r/w heads to appropriate track
+<ul>
+<li>depends on <em>seek distance</em>: distance in tracks between previous and current request</li>
+<li>value: 0 ms to cost of max seek distance</li>
+<li>dominates</li>
+</ul>
+</li>
+<li><em>rotational latency</em>: wait until desired sector spin to the r/w head
+<ul>
+<li>depends on rotational speed of disk</li>
+<li>disk is always spinning</li>
+<li>value: 0 ms to cost of single rotation</li>
+</ul>
+</li>
+<li><em>transfer time</em>: wait while desired sector spin past r/w heads
+<ul>
+<li>depends on rotational speed of disk and amount of data accessed</li>
+</ul>
+</li>
+</ul>
+<p><strong>eg.</strong> a disk has total capacity of 2^32 bytes. disk has single platter with 2^20 tracks. each track has 2^8 sectors. disk operates at 10000RPM and has max seek time of 20ms.</p>
+<ul>
+<li>BytesPerTrack = DiskCapacity / NumTracks
+<ul>
+<li>2^32 / 2^20 = 2^12</li>
+</ul>
+</li>
+<li>BytesPerSector = BytesPerTrack / NumSectorsPerTrack
+<ul>
+<li>2^12 / 2^8 = 2^4</li>
+</ul>
+</li>
+<li>MaxRotationalLatency = 60/RPM
+<ul>
+<li>60/10000 = 0.006s = 6ms</li>
+</ul>
+</li>
+<li>AvgSeekTime = MaxSeekTime / 2
+<ul>
+<li>20/2 = 10ms (dominating)</li>
+</ul>
+</li>
+<li>AvgRotationalLatency = MaxRotationalLatency / 2
+<ul>
+<li>6/2 = 3ms</li>
+</ul>
+</li>
+<li>cost to transfer 1 sector: SectorLatency = MaxRotationalLatency / NumSectorsPerTrack
+<ul>
+<li>6 / 2^8 = 0.0195ms</li>
+</ul>
+</li>
+<li>expected cost to read 10 consecutive sectors: Seek + RotationalLatency + TransferTime
+<ul>
+<li>we do not know positions, so use avg. 10 + 3 + 10(0.0195) = 13.195ms</li>
+</ul>
+</li>
+</ul>
+<p>performance implications:</p>
+<ul>
+<li>larger transfers are more efficient than smaller ones</li>
+<li>sequential io is faster than non-sequential io</li>
+<li>seek time dominates</li>
+<li>we can group requests to try and reduce avg request time</li>
+</ul>
+<h3 id="disk-head-scheduling">disk head scheduling</h3>
+<ul>
+<li>goal: reduce seek times by controlling order of requests</li>
+<li>may be performed by the device, operating system, or both</li>
+<li><em>first-come, first-served</em> is fair and simple, but offers no optimization for seek times</li>
+<li><em>shortest seek time first</em>: choose closest request to last one.
+<ul>
+<li>seek time reduced, but requests may starve</li>
+</ul>
+</li>
+</ul>
+<p><em>elevator algorithms (SCAN)</em>:</p>
+<ul>
+<li>disk head moves in one direction until there are no more requests in front of it, then reverses direction</li>
+<li>many variations</li>
+<li>reduces seek times while avoiding starvation</li>
+</ul>
+<p>sys/161 disk controller:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">offset</th>
+<th style="text-align:center">size</th>
+<th style="text-align:center">type</th>
+<th style="text-align:center">desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status</td>
+<td style="text-align:center"># of sectors</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status and command</td>
+<td style="text-align:center">status</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">command</td>
+<td style="text-align:center">sector number</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">status</td>
+<td style="text-align:center">RPM</td>
+</tr>
+<tr>
+<td style="text-align:center">32768</td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">data</td>
+<td style="text-align:center">transfer buffer</td>
+</tr>
+</tbody>
+</table>
+<p>writing:</p>
+<pre><code class="language-cs"><div><span class="hljs-comment">// only one disk request at a time</span>
+<span class="hljs-comment">// device driver write handler:</span>
+P(disk semaphore)
+copy data <span class="hljs-keyword">from</span> mem to device transfer buffer
+write <span class="hljs-string">&#x27;write&#x27;</span> command to disk status register
+<span class="hljs-comment">// wait for request to complete</span>
+P(disk completion semaphore)
+V(disk semaphore)
+
+<span class="hljs-comment">// interrupt handler</span>
+<span class="hljs-function">write disk status register to ack completion
+<span class="hljs-title">V</span>(<span class="hljs-params">disk completion semaphore</span>)
+</span></div></code></pre>
+<p>reading:</p>
+<pre><code class="language-cs"><div><span class="hljs-comment">// only one disk request at a time</span>
+<span class="hljs-comment">// device driver read handler:</span>
+P(disk semaphore)
+write target sector number to disk sector number register
+write <span class="hljs-string">&#x27;wread&#x27;</span> command to disk status register
+<span class="hljs-comment">// wait for request to complete</span>
+P(disk completion semaphore)
+<span class="hljs-function">copy data <span class="hljs-keyword">from</span> device transfer buffer to mem
+<span class="hljs-title">V</span>(<span class="hljs-params">disk semaphore</span>)
+
+<span class="hljs-comment">// interrupt handler</span>
+write disk status register to ack completion
+<span class="hljs-title">V</span>(<span class="hljs-params">disk completion semaphore</span>)
+</span></div></code></pre>
+<p>thread initiating r/w must wait until r/w is completed.</p>
+<h3 id="ssd">SSD</h3>
+<ul>
+<li>no mechanical parts; use integrated circuits</li>
+<li>variety of implementations:
+<ul>
+<li>DRAM: requires constant power to keep values</li>
+<li>flash memory: traps electrons in quantum cage</li>
+</ul>
+</li>
+<li>logically devided into blocks and pages: 2/4/8KB pages, 32KB-4MB blocks</li>
+<li>r/w at page level
+<ul>
+<li>pages are initialized to 1s; can transition 1-&gt;0 at page level</li>
+<li>high voltage requires to switch 0-&gt;1 (overwriting/deleting)</li>
+<li>overwriting/deleting data must be done at block level
+<ul>
+<li>naive: read whole block to mem, reinitialize block then write back</li>
+<li>SSD controller handles requests (faster):
+<ul>
+<li>mark page to be deleted/overwritten as invalid</li>
+<li>write to an unused page</li>
+<li>update translation table</li>
+<li>requires garbage collection</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SSD controller does <em>wear leveling</em>, distributing writes evenly across blocks</li>
+<li>defragmentation is harmful to lifespan of SSD, and servers no performance advantage</li>
+</ul>
+<h3 id="persistent-ram">persistent ram</h3>
+<ul>
+<li>values are persistent in the absence of power</li>
+<li>used to cache part of file in hard disk</li>
+</ul>
+<h2 id="a3">A3</h2>
+<ul>
+<li>currently kmalloc() only advances pointer and kfree() does nothing</li>
+<li>make sys_exit generic to handle signals (diff exit code)</li>
+<li><em>core-map</em>: keeps track which mem is used or free
+<ul>
+<li>do not malloc at the point of writing core-map. compute addr and write to it</li>
+<li>all mem accesses after this point use core-map instead of ram_stealmem (global flag to determine whether coremap is created)</li>
+</ul>
+</li>
+</ul>
+<h1 id="week-11-july-20">Week 11. July 20</h1>
+<h2 id="file-system">file system</h2>
+<ul>
+<li><em>files</em>: persistent, named data objects
+<ul>
+<li>data consists of sequence of numbered bytes</li>
+<li>may change over time</li>
+<li>has associated meta-data</li>
+</ul>
+</li>
+<li><em>file system</em>: data structures and algorithms to store, retrieve and access files
+<ul>
+<li><em>logical file system</em>: high-level api (what user sees)</li>
+<li><em>virtual file system</em>: abstraction of lower level file systems, persent multiple different underlying file systems to user as on</li>
+<li><em>physical file system</em>: how files are actually stored on physical media (exFAT, NTFS, ...)</li>
+</ul>
+</li>
+</ul>
+<p>basic file interfaces:</p>
+<ul>
+<li><code>open</code>: returns <em>file descriptor (identifier / handle)</em></li>
+<li><code>close</code>: invalidates a valid fd
+<ul>
+<li>kernal tracks while file descriptor are currently valid for each process</li>
+</ul>
+</li>
+<li><code>read</code>: copies data from file to virtual address space</li>
+<li><code>write</code>: copies data from virtual address space to file (cached)</li>
+<li><code>seek</code>: enables non-sequential rw (does not modify the file)</li>
+<li>get/set file metadata eg <code>fstat, chmod, ls</code></li>
+</ul>
+<h3 id="directory-and-file-names">directory and file names</h3>
+<ul>
+<li>a directory maps file names (strings) to <em>i-numbers</em> (unique identifier for a file or directory)</li>
+<li>directories provide way for applications to group related files</li>
+<li>fs' directories can be viewed as 'tree' with single <em>root</em> directory
+<ul>
+<li>directories can be either internal node or leaves</li>
+<li>files must be leaves</li>
+<li>both directories and files have i-number</li>
+</ul>
+</li>
+<li>files may be identified by <em>pathnames</em> describing path through the directory tree from root to file</li>
+<li>directories also have pathnames</li>
+<li>only kernel is permitted to edit directories</li>
+</ul>
+<pre><code><code><div>/root  --&gt;  2
+ +- bin/ --&gt;  312
+ |   +- prog1  --&gt;  654
+ |   +- prog2  --&gt;  100
+ |   +- misc/  --&gt;  145
+ |       +- test  --&gt;  5
+ +- foo/ --&gt;  24
+     +- uu  --&gt;  654
+     +- docs/  --&gt;  93
+</div></code></code></pre>
+<p>links:</p>
+<ul>
+<li>a <em>hard link</em> is an association betwwen name and i-number
+<ul>
+<li>each entry in directory is hard link</li>
+</ul>
+</li>
+<li>once file is created, additional hard links can be made to it</li>
+<li>linking to existing file creates new pathname for that file
+<ul>
+<li>each file has unique i-number but multiple hard links</li>
+</ul>
+</li>
+<li>when last hard link to a file is removed, file is also removed
+<ul>
+<li>the file has no pathname and can no longer to opened</li>
+</ul>
+</li>
+<li>not possible to hard link to directory (to avoid cycles - causing infinite number of pathnames)</li>
+</ul>
+<h3 id="multiple-file-systems">multiple file systems</h3>
+<ul>
+<li>it is common to have multiple file systems in system</li>
+<li>some kind of global file namespace is required</li>
+<li>windows: two-part filenames: file system name (C:\), pathname within file system</li>
+<li>unix: create single hierarchial namespace that combines namespaces of two systems (<code>mount</code>)
+<ul>
+<li>internally they are still two fs so we do not mix i-numbers</li>
+</ul>
+</li>
+</ul>
+<h3 id="vsfs">VSFS</h3>
+<p>persistent data: file data, metadata, diretories and links, fs metadata</p>
+<p>non-persistent: per process open file fd table (file handle, file position); system wide (open file table, <em>cached</em> copies of persistent data)</p>
+<p>example:</p>
+<ul>
+<li>256 KB</li>
+<li>most disks have sector size of 512 bytes
+<ul>
+<li>memory is usually byte addressable</li>
+<li>disk is usually sector addressable</li>
+</ul>
+</li>
+<li>group every 8 consecutive sectors into a block (4 KB)
+<ul>
+<li>better spatial locality (fewer seeks)</li>
+<li>reduce number of block pointers</li>
+<li>4KB block is convenient for demand paging</li>
+<li>64 total blocks on this disk</li>
+</ul>
+</li>
+</ul>
+<pre><code><code><div>              inodes                  data
++--+-----+--------------+   +-----------------------+
+|su|i |d |I |I |I |I |I |   |D |D |D |D |D |D |D |D |      ...
++--+-----+--------------+   +-----------------------+
+0                       7   8                       15
+</div></code></code></pre>
+<ul>
+<li>most blocks should store data</li>
+<li>create array of i-nodes, where each i-node contains metadata for a file
+<ul>
+<li>index into the array is file's index number (i-number)</li>
+</ul>
+</li>
+<li>assuming each i-node is 256 bytes and we dedicate 5 blocks for i-nodes
+<ul>
+<li>allows for 80 total i-nodes/files</li>
+</ul>
+</li>
+</ul>
+<p>to know which i-nodes and blocks are free:</p>
+<ul>
+<li>we need to know a free i-node when creating new file; free block when writing a file
+<ul>
+<li>file size may be different from its size on disk - because we do not share data blocks across file</li>
+</ul>
+</li>
+<li>in VSFS, use a bit map for each (i, d)
+<ul>
+<li>can also use free list</li>
+<li>can copy and traverse inode array each time creating file - slow</li>
+</ul>
+</li>
+<li>a block size of 4 KB means we can track 32K i-nodes and 32K blocks as one bit is used to track them (more than we need)</li>
+</ul>
+<p>superblock:</p>
+<ul>
+<li>first block is reserved as <em>superblock</em></li>
+<li>containing meta-info about entire fs (how many i-nodes and blocks, where i-node table begins, etc.)</li>
+</ul>
+<p>i-nodes:</p>
+<ul>
+<li>an <em>i-node</em> is a fixed size index structure holding file metadata and small number of pointers to data blocks
+<ul>
+<li>file type, permission, length, number of blocks, last access</li>
+<li>last i-node update, last file update</li>
+<li>number of hard links to file</li>
+<li>direct data block pointers</li>
+<li>single, double, triple indirect data block pointers
+<ul>
+<li>when we run out of direct pointers, we use extra blocks to store pointers to blocks, and these indirect pointers direct to them</li>
+<li>increase file size on disk since we cannot share</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="assets/w11_1.JPG" alt="img"></p>
+<p><strong>eg.</strong> block size is 4 KB, pointer size is 4 B.</p>
+<ol>
+<li>inode has 12 direct pointers, how big is file we can access from direct pointers?
+<ul>
+<li>AccessibleFromDirectPtrs = NumDirectPtrs * Blocksize</li>
+<li>12 * 4KB = 48 KB</li>
+</ul>
+</li>
+<li>inode has 1 single indirect pointer, how big can we access from single indirect pointers?
+<ul>
+<li>NumPtrsPerBlock = BlockSize / PtrSize</li>
+<li>AccessibleFromSinglePtrs = NumSinglePtrs * NumPtrsPerBlock * BlockSize</li>
+<li>1 * (2^12 / 2^2) * 4KB = 2^22 bytes = 4 MB</li>
+</ul>
+</li>
+<li>inode has 1 double indirect pointer, how big can we access from double indirect pointers?
+<ul>
+<li>AccessibleFromDoublePtrs = NumDoublePtrs * (NumPtrsPerBlock)^2 * BlockSize</li>
+<li>1 * (2^10)^2 * 4KB = 2^32 bytes = 4 GB</li>
+</ul>
+</li>
+<li>inode has 1 triple indirect pointer, how big can we access from triple indirect pointers?
+<ul>
+<li>AccessibleFromTriplePtrs = NumTriplePtrs * (NumPtrsPerBlock)^3 * BlockSize</li>
+<li>1 * (2^10)^3 * 4KB = 2^42 bytes = 4 TB</li>
+</ul>
+</li>
+<li>how big a file can we store?
+<ul>
+<li>48KB + 4MB + 4GB + 4TB</li>
+</ul>
+</li>
+</ol>
+<p><strong>eg.</strong> assume fs uses a block size of 1024 bytes, pointer size 4 bytes, and that i-nodes include 9 direct pointers, 1 indirect pointer, and 1 double-indirect pointer. The fs has a block cache (intially empty) and an i-node cache.</p>
+<pre><code class="language-c"><div><span class="hljs-keyword">char</span> x[<span class="hljs-number">1000</span>];
+<span class="hljs-comment">// assume that f is a descriptor referring to a</span>
+<span class="hljs-comment">// large file that has already been opened</span>
+lseek(f, <span class="hljs-number">10500</span>, SEEK_SET);
+write(f, x, <span class="hljs-number">1000</span>);
+read(f, x, <span class="hljs-number">1000</span>);
+</div></code></pre>
+<ul>
+<li>ptrs per block: 1024/4 = 256</li>
+<li>access from direct ptrs: 9 * 1KB = 9KB =&gt; [0, 9216)</li>
+<li>single indirect: [9216, 9216+256*1024) =&gt;
+<ul>
+<li>A: [9216, 10240)</li>
+<li>B: [10240, 11264)</li>
+<li>C: [11264, 12288)</li>
+<li>D: [12288, 13312)</li>
+<li>...</li>
+</ul>
+</li>
+<li>lseek: 0r, 0w</li>
+<li>write from 10500 to 11500: r inode, r ptr block, r B, w B, r C, w C, w inode</li>
+<li>read from 11500 to 12500: r D, w inode (C in cache)</li>
+</ul>
+<p><strong>eg.</strong> reading from file (/foo/bar):</p>
+<p>assuming foo directory fit in single block. no caching.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">op</th>
+<th style="text-align:center">data bitmap</th>
+<th style="text-align:center">inode bitmap</th>
+<th style="text-align:center">root inode</th>
+<th style="text-align:center">foo inode</th>
+<th style="text-align:center">bar inode</th>
+<th style="text-align:center">root data</th>
+<th style="text-align:center">foo data</th>
+<th style="text-align:center">bar data[0]</th>
+<th style="text-align:center">bar data[1]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>open(bar)</code></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>read()</code></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>reading bar's inode first time:
+<ul>
+<li>check permission</li>
+<li>fd is returned and added to process's fd table</li>
+<li>file added to kernel's list if open files</li>
+</ul>
+</li>
+<li>reading data from /foo/bar on block at a time:
+<ul>
+<li>intially follow first direct pointer</li>
+<li>inode is written to update access time</li>
+</ul>
+</li>
+<li>if we follow indirect pointer, more read</li>
+<li>even user wants single byte of file, entire block must be read</li>
+</ul>
+<h1 id="week-12-july-27">Week 12. July 27</h1>
+<p><strong>eg.</strong> create file (/foo/bar)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">op</th>
+<th style="text-align:center">data bitmap</th>
+<th style="text-align:center">inode bitmap</th>
+<th style="text-align:center">root inode</th>
+<th style="text-align:center">foo inode</th>
+<th style="text-align:center">bar inode</th>
+<th style="text-align:center">root data</th>
+<th style="text-align:center">foo data</th>
+<th style="text-align:center">bar data[0]</th>
+<th style="text-align:center">bar data[1]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>create(bar)</code></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>write()</code></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">read</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">write</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>when writing a partial block, that block must be read first. when writing an entire block, no read is required.</li>
+<li>if we follow triple indirect pointers, at most 3 more reads.</li>
+</ul>
+<p>delete:</p>
+<ol>
+<li>remove entry from directory;</li>
+<li>remove file index from i-node table;</li>
+<li>mark file's data blocks free in free space index</li>
+</ol>
+<p>how does quick format work? clear all bitmap (and inodes).</p>
+<h3 id="chaining">chaining</h3>
+<ul>
+<li>VSFS uses per-file index (direct/indirect ptrs) to access blocks</li>
+<li>alternative approaches:
+<ul>
+<li><em>chaining</em>: each block includes a pointer to next block (linked list)</li>
+<li><em>external chaning</em>: chain kept as external data structure (FAT)</li>
+</ul>
+</li>
+<li>directory table contains name of file and each file's starting block</li>
+<li>acceptable for sequential access, very slow for random access
+<ul>
+<li>improvement: introduces special file access table that specifies all chains to avoid loading real file data</li>
+</ul>
+</li>
+</ul>
+<h3 id="file-system-design">file system design</h3>
+<p>for general purpose file system, design it to be efficient for common case</p>
+<ul>
+<li>most files are small, 2KB</li>
+<li>average file size growing</li>
+<li>on average, 100 thousand files</li>
+<li>typically small directories (contain few files)</li>
+<li>even as disks grow large, the average fs usage is 50%</li>
+</ul>
+<p>file system parameters:</p>
+<ul>
+<li>how many i-nodes should a fs have? a lot</li>
+<li>how many direct and indirect blocks? more direct ptrs</li>
+<li>what is right block size? small</li>
+</ul>
+<h3 id="failures">failures</h3>
+<ul>
+<li>a single local file system operation may require several disk io operations</li>
+<li>system failures will destroy in-memory file system structures</li>
+<li>persistent structures should be <em>crash consistent</em> ie should be consistent when system restarts after a failure</li>
+<li>special-purpose consistency checkers (unix <code>fsck</code>, berkeley FFS, ext2):
+<ul>
+<li>runs after crash, before normal operations resume</li>
+<li>find an attempt to repair inconsisten fs data structures</li>
+</ul>
+</li>
+<li>journaling (NTFS, ext3), <em>write-ahead logging</em>:
+<ul>
+<li>record file system metadata changes in a log so sequences of changes can be written to disk in a single operation</li>
+<li>after changes have be logged, update disk data structures</li>
+<li>after a failure, redo logged updates in case they were not done before failure</li>
+</ul>
+</li>
+</ul>
+<h2 id="virtual-machines">virtual machines</h2>
+<ul>
+<li>a <em>virtual machine</em> is a simulated/enumated computer system
+<ul>
+<li>sys/161 is emulation of a mips r3000</li>
+</ul>
+</li>
+<li>vm provide ability for one machine to act as many</li>
+<li>operating systems and programs can run on vm in isolation
+<ul>
+<li>os and program should not be aware of the virtualized hardware and operate normally without modification, patching</li>
+<li>in reality not</li>
+</ul>
+</li>
+</ul>
+<p>pros:</p>
+<ul>
+<li>provide safe, inexpensive sandbox environment for users
+<ul>
+<li>run sensitive applications without affecting integrity of real system</li>
+<li>test program for a different architecture or os</li>
+</ul>
+</li>
+<li>resource utilization
+<ul>
+<li>permit multiple users to use a server of cloud in isolation</li>
+</ul>
+</li>
+<li>checkpoints/snapshots: let users pause a vm and continue later from exact saved position</li>
+</ul>
+<h3 id="first-attempt">first attempt</h3>
+<ul>
+<li>the virtual cpu executes instructions of its <em>guest</em> and user program running within that OS
+<ul>
+<li>'capture' the instructions meant for this virtual cpu</li>
+<li>translate these instructions into instructions for real cpu
+<ul>
+<li>type-2 hypervisors have problems:</li>
+<li>interrupts: key pressed, who handles interrupt?</li>
+<li>privilege: vm is a user program. guest runs privileged code, should translated code run in privileded mode in host os?</li>
+<li>virtual memory: both os use their own virtual memory implementation, what if we have address collision?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code><code><div>guest OS           vm          host OS       physical CPU
++------+       +--------+      +-----+       +---------+
+|os/161|  --&gt;  |sys/161 |  --&gt; |linux|  --&gt;  |intel cpu|
++------+       +--------+      +-----+       +---------+
+</div></code></code></pre>
+<h3 id="privileges">privileges</h3>
+<ul>
+<li>a <em>hypervisor</em> is virtual machine manager</li>
+<li>type 1: hypervisor runs on bare hardware
+<ul>
+<li>vms run less priviledged modes; they cannot disable interrupts, etc</li>
+<li>unprivileged instructions may execute normally (probably no translation)</li>
+<li>privileged instructions trap to hypervisor, where their behavior is handled
+<ul>
+<li>hypervisor may pass these instructions through for execution or emulate the behaviour (eg priveleged code)</li>
+<li>either way, interrupts are turned off</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>type 2: hypervisor on host os
+<ul>
+<li>unprivileged instructions can be translated and executed as a normal user process</li>
+<li>hypervisor will emulate behaviour of privileged instructions and make system calls to  host OS as appropriate</li>
+</ul>
+</li>
+</ul>
+<pre><code><code><div>                              +--+            +--+
+                              |VM|            |VM|
+                              +--+            +--+
+                               v               v
++--+            +--+          +-----------------+
+|VM|            |VM|          |type 2 hypervisor|
++--+            +--+          +-----------------+
+ v               v                    v
++-----------------+               +-------+
+|type 1 hypervisor|               |host OS|
++-----------------+               +-------+
+        v                             v
+      +---+                         +---+
+      |CPU|                         |CPU|
+      +---+                         +---+
+</div></code></code></pre>
+<p>how does hypervisor differentiate betweern os and user program excuting privileged instruction?</p>
+<ul>
+<li>'rings' of privilege at the cpu; not just privileged vs. unprivileged</li>
+<li>hypervisor runs in highest privileged mode</li>
+<li>gues os runs in next highest mode</li>
+<li>guest user programs run in lowest privileged mode</li>
+<li>when excution of privileged instruction causes trap to hypervisor, it can determine cpu privilege to determine source</li>
+</ul>
+<h3 id="virtual-memory-1">virtual memory</h3>
+<ul>
+<li>each guest os may map virtual pages to same real physical page, but only one could technically use that page</li>
+<li>type 1 hypervisors manage memory so that collisions on physical pages do not occur by <em>shadow page tables</em>
+<ul>
+<li>a shadow page table treats guest physical pages as another level in table, and will map it to physical page that will not collide</li>
+<li>but then every translation must go to hypervisor instead of just mmu - costly</li>
+<li>modern cpus support <em>extended page tables</em> in mmu
+<ul>
+<li>mmu can translate guest virtual addresses to host physical addresses directly</li>
+<li>entries in guest physical tables are pointers to the shadow page table containing host physical pages</li>
+<li>hypervisor should update mmu's page table base register on a world swap (when vm executing changes)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="io-and-devices">io and devices</h3>
+<ul>
+<li>guest os requiresk disk to save data
+<ul>
+<li>each guest could have its own disk partition - what if more vms than feasible partitions?</li>
+<li>hypervisor creates a file on disk and presents it to the vm as a file system</li>
+</ul>
+</li>
+<li>other devices for io:
+<ul>
+<li><em>device pass through</em>: lets device be assigned to specific vm</li>
+<li><em>device isolation</em>: ensures if keyboard is assigned to a particular vm, that device does not affect other guests</li>
+<li><em>interrupt redirection</em>: lets interrupt from a device be directed to specific vm they are assigned to</li>
+<li>hardware support required</li>
+</ul>
+</li>
+</ul>
+<h1 id="opt-aug-3">Opt. Aug 3</h1>
+<h2 id="networking">networking</h2>
+<p>5-layer model:</p>
+<ul>
+<li>application
+<ul>
+<li>chrome, email, file transfter, common protocols (HTTP, FTP, ...), application who sends/receives messages</li>
+<li>user programs</li>
+</ul>
+</li>
+<li>transport</li>
+<li>network</li>
+<li>link</li>
+<li>physical</li>
+</ul>
+<p>transport layer:</p>
+<ul>
+<li>responsible for sending and receiving data for applications</li>
+<li>takes messages from app and hands them to the 'postman'</li>
+<li>reiceives messages from 'postman' and hands them to app</li>
+<li>TCP: relieable, in-order transmission</li>
+<li>UDP: unreliable, fast</li>
+<li>TCP, UDP live in kernel</li>
+</ul>
+<p>network layer:</p>
+<ul>
+<li>the 'postman'</li>
+<li>collects and transfers messages from/to sockets</li>
+<li>transports data from <em>origin</em> to <em>destination machines</em></li>
+<li>IP (internet protocol): used to send application messages</li>
+<li>ICMP: used to send error messages, control parameters</li>
+</ul>
+<p>link layer:</p>
+<ul>
+<li>protocols used by NIC (network interface card) to send/receive data</li>
+<li>transports data from between <em>links</em>, nodes in network
+<ul>
+<li>network card to router</li>
+</ul>
+</li>
+<li>Ethernet, wifi 802.11a/c/b/n</li>
+<li>implemented in drivers</li>
+</ul>
+<p>physical layer:</p>
+<ul>
+<li>methods for
+<ul>
+<li>detecting signal collisions</li>
+<li>multiplexing, ...</li>
+</ul>
+</li>
+</ul>
+<h3 id="kernels-role-in-5-layer-model">kernel's role in 5-layer model</h3>
+<ul>
+<li>sockets (part of transport layer)
+<ul>
+<li>a labelled 'door'</li>
+<li>typically, each TCP socket can only be used by a single process</li>
+<li>socket labels are unique port numbers</li>
+</ul>
+</li>
+<li>packets arriving to the machine via network layer are sent to appropriate socket</li>
+<li>packets leaving machine go out the docket to network layer and into network</li>
+</ul>
+<pre><code class="language-c"><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ping</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// all syscalls</span>
+    <span class="hljs-keyword">int</span> sfd = socket(AF_INET, SOCK_STREAM, <span class="hljs-number">0</span>);
+    bind(sfd, addr, addrlen);
+    listen(sfd, backlog);
+    send(sfd, msg, msglen, <span class="hljs-number">0</span>);
+}
+</div></code></pre>
+<ul>
+<li>network layer is also part of kernel
+<ul>
+<li>sockets may transport packets between each other</li>
+<li>network layer transports packets between machines</li>
+<li>network takes packets sent through sockets
+<ul>
+<li>converts packets to datagrams, which may invlove fragmentation into smaller chuncks</li>
+<li>forward datagrams to NICs</li>
+<li>converts datagram to packets and delivers assembled packets to correct sockets</li>
+<li>receives datagrams from NICs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>link layer is partially in kernel
+<ul>
+<li>drivers for ethernet, ...
+<ul>
+<li>convert/format dataframs into frames</li>
+<li>convert/format frames into datagrams</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>routing and forwarding
+<ul>
+<li>kernel participates in routing algorithms</li>
+<li>maintains routing/forwarding tables
+<ul>
+<li>used to direct packets through network (more than one path - which to take?)</li>
+</ul>
+</li>
+<li><em>ARP (address resolution protocol)</em>: kernel maintains table that maps MAC address (address of NIC) to IP addresses</li>
+</ul>
+</li>
+<li>packet filtering
+<ul>
+<li>system calls are used to add entries to packet filter table</li>
+<li>in the transport layer, do not pass packet to sockets</li>
+</ul>
+</li>
+<li><em>NAT (network address translation)</em>: hide devices on home network behind a single, public IP
+<ul>
+<li>maps unused socket numbers to local IP addresses</li>
+<li>translates packet socket number to appropriate IP address for machine on local network</li>
+</ul>
+</li>
+</ul>
+<p>not (usually) a part of kernel:</p>
+<ul>
+<li>DNS caches</li>
+<li>DHCP</li>
+<li>ping, traceroute, and other tools used to diagnose networks</li>
+<li>however often implemented/offered by OS</li>
+<li>wireless: every pkt to everyone is visible on one machine</li>
+</ul>
+
+    </body>
+    </html>
