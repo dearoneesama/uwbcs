@@ -1,0 +1,41 @@
+# uwbcs
+
+My digital notes for CS courses taken in class at University of Waterloo. They are hosted on [this website](https://student.cs.uwaterloo.ca/~y3285wan/).
+
+## Workflow
+Notes taken in class serve as a condensed version of the course material (coursenotes, slides, etc.), which can be used for homework and test preparation.
+
+Steps to write the notes:
+1. Edit markdown files during each lecture;
+2. At the end of each week, create/update tables of contents, and using any supported VS Code extension, export the markdown files to HTML;
+3. Copy the build files to the `public_html` of your CS student server:
+
+```bash
+#!/bin/bash
+set -x
+TARGET=<username>@linux.student.cs.uwaterloo.ca
+SSH_KEY=<key path>
+FILES=''
+FILENAME="tmp_scp_cpy$(date +$Y%m%d-%H%M%S).zip"
+
+for course in cs444 cs452
+do
+    FILES+=' '${course}'/note.html '${course}'/assets'
+done
+
+# zip build files to a temp file
+zip -r $FILENAME $FILES
+# copy the zip to the server
+scp -i $SSH_KEY -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null $FILENAME $TARGET:~/public_html
+# unzip & remove the file on the server, and change permissions of the build files
+ssh -i $SSH_KEY -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null $TARGET "cd public_html && unzip -o \"${FILENAME}\" && rm \"${FILENAME}\" && chmod -R 755 ."
+# remove the zip file locally
+rm $FILENAME
+```
+
+## Techniques
+* If required, take screenshots of the course slides or the professor's drawing and embed them in the markdown file. On Windows one can uses the snipping tool (Win-sn-Enter). Beware of the letter cases;
+* If diagrams are easy to reproduce in pixels, use [asciiflow](https://github.com/lewish/asciiflow) and paste the ASCII art as a code block;
+* FSM can be drawn using [this](https://madebyevan.com/fsm/);
+* To type special characters in non-latex mode, first type it in latex (`$\epsilon$`), then copy the rendered character;
+* Giant markdown source file can slow down the editor. Cut the existing contents into other files before the lecture and paste them back after the lecture;
